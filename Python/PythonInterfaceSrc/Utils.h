@@ -14,18 +14,26 @@ extern "C" {
 
 #define GetArrayLength(arr)          (arr != NULL ? sizeof(arr) / sizeof(arr[0]) : 0)
 #define GetArrayLengthByNonNULL(arr, arrCountPtr)            \
-	do {                                                 \
-		int acount = 0;                              \
-		int arrLengthUpper = GetArrayLength(arr);    \
-		for(int ai = 0; ai < arrLengthUpper; ai++) { \
-			if(arr[ai] == NULL) break;           \
-			acount++;                            \
-		}                                            \
-		*arrCountPtr = acount;                       \
+	do {                                                    \
+		int acount = 0;                                    \
+		int arrLengthUpper = GetArrayLength(arr);          \
+		for(int ai = 0; ai < arrLengthUpper; ai++) {       \
+			if(arr[ai] == NULL) break;                    \
+			acount++;                                     \
+		}                                                  \
+		*arrCountPtr = acount;                             \
 	} while(0)
 
-void Free(void *memPtr);
+void FreeMemory(void *memPtr);
+
+#define Free(memPtr)                                         \
+     do {                                                    \
+          FreeMemory(memPtr);                                \
+          memPtr = NULL;                                     \
+     } while(0)
+
 char * CopyString(const char *origStr, int *chCount);
+void StringToUpper(char *lcStr);
 
 bool IsDirectory(const char *dirPath);
 bool IsRegularFile(const char *filePath);

@@ -37,15 +37,15 @@ class GTFoldPythonConfig(object):
     THERMO_PARAMS_SPEC_TURNER04     = "Turner04"
     THERMO_PARAMS_SPEC_RNASTRUCTURE = "RNAStructure"
     THERMO_PARAMS_SPEC_DEFAULT      = "default"
-    THERMO_PARAMS_SPEC_TURNER99     = "default-Turner99"
+    THERMO_PARAMS_SPEC_TURNER99     = "Turner99"
     THERMO_PARAMS_SPEC_MT09         = "default-MT09"
     THERMO_PARAMS_SPEC_MT99         = "default-MT99"
     THERMO_PARAMS_SPEC_TFMCDANGLES  = "default-TurnerConstrDangles"
     THERMO_PARAMS_SPEC_TFMDANGLES0  = "default-TurnerDangles0"
 
-    #THERMO_PARAMS_BASEDIR        = os.path.abspath("##__THERMO_PARAMS_EXTRA_DATA_BASEDIR__##/")
-    THERMO_PARAMS_BASEDIR        = os.path.abspath("./Testing/ExtraGTFoldThermoData/") + "/"
-    THERMO_PARAMS_SUBDIRS        = dict(
+    THERMO_PARAMS_DEFAULT_BASEDIR   = "##--__GTFOLD_DATADIR_PATH__--##"
+    THERMO_PARAMS_BASEDIR           = "##--__GTFOLD_DATADIR_PATH__--##"
+    THERMO_PARAMS_SUBDIRS           = dict(
         {
             THERMO_PARAMS_SPEC_GTFOLD       :    "DefaultGTFold", 
             THERMO_PARAMS_SPEC_RNAFOLD      :    "DefaultRNAFold", 
@@ -62,10 +62,33 @@ class GTFoldPythonConfig(object):
     )
 
     @staticmethod
-    def GetThermodynamicParametersDirectory(specType):
-         specSubDir = GTFoldPythonConfig.THERMO_PARAMS_SUBDIRS[specType]
-         if specSubDir == None:
+    def ResolveThermodynamicParametersDirectory():
+        nextTPDataDir = GTFoldPythonConfig.THERMO_PARAMS_DEFAULT_BASEDIR
+        if os.path.exists(nextTPDataDir):
+            return nextTPDataDir
+        nextTPDataDir = os.path.abspath(os.path.join("./Testing/ExtraGTFoldThermoData/")) + "/"
+        if not os.path.exists(nextTPDataDir):
+            #raise RuntimeError("Having to DEFAULT to GTFOLDDATADIR ... ")
+            defaultGTFoldDataDir = os.environ.get('GTFOLDDATADIR')
+            if defaultGTFoldDataDir == None or len(defaultGTFoldDataDir) == 0:
+                nextTPDataDir = None
+            else:
+                nextTPDataDir = os.path.abspath(os.path.join(defaultGTFoldDataDir)) + "/"
+            if nextTPDataDir == None or not os.path.exists(nextTPDataDir):
+                raise RuntimeError("Unable to resolve location of the thermodynamic parameters directory!")
+        return nextTPDataDir
+    ##
+
+    @staticmethod
+    def GetThermodynamicParametersDirectory(specType, resetDir=False):
+         if resetDir or GTFoldPythonConfig.THERMO_PARAMS_BASEDIR == "" or \
+                 not os.path.exists(GTFoldPythonConfig.THERMO_PARAMS_BASEDIR):
+             GTFoldPythonConfig.THERMO_PARAMS_BASEDIR = GTFoldPythonConfig.ResolveThermodynamicParametersDirectory()
+         if specType not in GTFoldPythonConfig.THERMO_PARAMS_SUBDIRS:
              raise NotImplementedError
+         specSubDir = GTFoldPythonConfig.THERMO_PARAMS_SUBDIRS[specType]
+         if GTFoldPythonConfig.THERMO_PARAMS_BASEDIR[-1] != '/':
+             GTFoldPythonConfig.THERMO_PARAMS_BASEDIR += '/'
          return GTFoldPythonConfig.THERMO_PARAMS_BASEDIR + specSubDir
     ##
 

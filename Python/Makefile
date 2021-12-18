@@ -2,16 +2,21 @@
 #### Author: Maxie D. Schmidt (maxieds@gmail.com)
 #### Created: 2020.01.22
 
-SED=sed
-GREP=grep
-READLINK=readlink
-BASH=/bin/bash
+SED=$(shell which sed)
+GREP=$(shell which grep)
+READLINK=$(shell which readlink)
+BASH=$(shell which bash)
+RANLIB=$(shell which ranlib)
+LIBTOOL=$(shell which libtool)
+LIBTOOLIZE=$(shell which libtoolize)
 
 BUILD_PLATFORM=$(shell uname -s)
 ifeq "$(BUILD_PLATFORM)" "Darwin" # Apple / Mac OSX
-	SED=gsed
-	GREP=ggrep
-	READLINK=greadlink
+	SED=$(shell which gsed)
+	GREP=$(shell which ggrep)
+	READLINK=$(shell which greadlink)
+     #LIBTOOL=$(shell which glibtool)
+	#LIBTOOLIZE=$(shell which glibtoolize)
 endif
 
 GTFOLDMAKEDIR=../gtfold-mfe
@@ -31,29 +36,30 @@ MODULENAME=$(MODULE_BASENAME)$(MODULEEXT)
 GTFOLD_MODULENAME=$(OBJBUILDDIR)/GTFold.a
 
 PYSPEC=-DPYTHON3
-PYCFG=python3-config#--embed #python2.7-config
 PYPKG=python3
 PYTHON3RT=python3
 
-CC=gcc
-LD=g++
-CXX=$(LD)
-#AR=ar
-#AS=as
-RANLIB=ranlib
-LIBTOOL=libtool
+## The --embed flag is only apparently good for >= python3.9:
+PYCFG=$(shell which python3-config) --embed #python2.7-config
+ifeq ([ $(shell python3 --version) -lt 3.9 ], true)
+	PYCFG=$(shell which python3-config)
+endif
 
-CFLAGS_BASE=-O0 -D_GNU_SOURCE -DGNU_SOURCE -D__USE_GNU #-D_GLIBCXX_DEBUG #-U_OPENMP
+CC=$(shell which gcc)
+LD=$(shell which g++)
+CXX=$(LD)
+
+CFLAGS_BASE=-O0 -D_GNU_SOURCE -DGNU_SOURCE -D__USE_GNU -DPY3K #-D_GLIBCXX_DEBUG #-U_OPENMP
 CFLAGS=
 LDFLAGS_BASE=
 LDFLAGS_LIBS=
 LDFLAGS=$(LDFLAGS_BASE) $(LDFLAGS_LIBS)
 SOLIBOUTFLAGS=
 
-CC_LIBGOMP=gcc
-CC_GTFOLD=gcc
-CXX_GTFOLD=g++
-GFORTRAN=gfortran
+CC_LIBGOMP=$(shell which gcc)
+CC_GTFOLD=$(shell which gcc)
+CXX_GTFOLD=$(shell which g++)
+GFORTRAN=$(shell which gfortran)
 
 CFLAGS_LIBGMP=
 CFLAGS_LIBGOMP=
@@ -68,29 +74,30 @@ FCFLAGS_LIBGOMP=
 ifeq "$(BUILD_PLATFORM)" "Darwin" # Apple / Mac OSX
 	#MODULEEXT=$(shell $(PYCFG) --extension-suffix)
 	MODULEEXT=.dylib
-	RANLIB=ranlib -c
-	CFLAGS_BASE= -g -march=native -pedantic -fPIC \
+	RANLIB=$(shell which ranlib) -c
+	#CC=$(shell which clang)
+	#CXX=$(shell which clang++)
+	#LD=$(shell which ld64.lld)
+	CFLAGS_BASE= -g -march=native -pedantic -fPIC -Xpreprocessor -fopenmp \
 			-fno-strict-aliasing -Wall -Wextra -I$(GTFOLDINCL) -m64 \
 			-DBUILD_SHARED_LIBS=ON $(PYSPEC) -fvisibility=default \
 			-fno-stack-check -fno-stack-protector -D_FORTIFY_SOURCE=0 \
+			-I/usr/local/opt/llvm/include \
 			-I$(shell $(READLINK) -f $(LIBGMPDIR)) -I$(shell $(READLINK) -f $(LIBGOMPDIR))
 	CFLAGS=$(CFLAGS_BASE)
 	CFLAGS+= -DNDEBUG -Wstrict-prototypes \
 		 $(shell $(PYCFG) --includes | $(SED) -e 's/-no-cpp-precomp//g')
-	LDFLAGS_BASE= -rdynamic -bind_at_load -flat_namespace -Wl,-undefined,error -shared -fPIC \
-	      		-fvisibility=default -fno-stack-check -fno-stack-protector -no-pie 
-			-D_FORTIFY_SOURCE=0 -fno-stack-size-section #-fsanitize=address
+	LDFLAGS_BASE= -dynamic -bind_at_load -flat_namespace -Wl,-undefined,error 
 	LDFLAGS_LIBS+= -Wl,-all_load $(LIBGOMPSTATIC).a $(LIBGMPSTATIC) -Wl,-noall_load \
-			-ldl -lpthread -lc++ #-lc++abi
+			-ldl -lpthread -lc++ -lc -L/usr/local/opt/llvm/lib -lomp #-lc++abi
 	LDFLAGS+= $(shell $(PYCFG) --ldflags | $(SED) -e 's/-no-cpp-precomp//g') \
 			-read_only_relocs suppress \
-			-rpath ../ #$(shell $(READLINK) -f ../)
-	SOLIBOUTFLAGS= -dynamiclib -install_name $(MODULE_BASENAME) \
-    			-current_version 1.0.0 -compatibility_version 1.0 \
-			#-framework /usr/local/Cellar/python-dbg@3.7/3.7.6_13/Frameworks/Python.framework/Versions/3.7/Python
+			#-rpath Lib #$(shell $(READLINK) -f ../)
+	SOLIBOUTFLAGS= -dynamiclib -install_name @rpath/$(MODULE_BASENAME) \
+    			-current_version 1.0.0 -compatibility_version 1.0
 	CC_LIBGOMP=$(CC) -march=native -force_cpusubtype_ALL 
 	CC_GTFOLD=$(CC) -march=native -force_cpusubtype_ALL
-	CXX_GTFOLD=$(LD) -march=native -force_cpusubtype_ALL
+	CXX_GTFOLD=$(CXX) -march=native -force_cpusubtype_ALL
 	GFORTRAN=gfortran -march=native -force_cpusubtype_ALL
 	CFLAGS_LIBGMP= -march=native -force_cpusubtype_ALL -std=gnu99 -fPIC -m64 -fvisibility=default #-Wno-error
 	CFLAGS_LIBGOMP= -Wno-error=implicit-function-declaration \
@@ -161,18 +168,27 @@ default: make_GTFoldPython
 
 libconfig-reinit: make_runLibDepsConfigureScripts make GTFoldPython
 
+# May ocassionally need to rebuild when autotools versions change:
+# $ export _lt_pkgdatadir=/usr/local/share/libtool
+# $ sudo ln -s /usr/local/opt/libtool/share/aclocal /usr/local/share/libtool/libltdl/m4
+# $ sudo ln -s /usr/local/share/libtool/config /usr/local/share/libtool/libltdl/config
+# $ cd ../libgmp-* && autoreconf --install --force --verbose 
+# $ aclocal && libtoolize -f && autoheader && automake
+# $ cd ../libgomp-* && autoreconf --install --force --verbose
+# $ aclocal && libtoolize -f && autoheader && automake
 make_runLibDepsConsfigureScripts: 
 	@mkdir -p ./Lib
-	@cd $(LIBGMPDIR) && \
+	@cd $(LIBGMPDIR) && rm -f ./shtool && \
 		CFLAGS="$(CFLAGS_LIBGMP)" \
 		CXXFLAGS="$(CXXFLAGS_LIBGMP)" \
 		LDFLAGS="$(LDFLAGS_LIBGMP)" \
 		READLINK="$(READLINK)" \
 		RANLIB="$(RANLIB)" \
-		CC="$(CC)" CCLD="$(CC)" CXX="$(LD)" CXXLD="$(LD)" \
-		./configure --enable-static --disable-shared --with-pic --enable-cxx \
+		CONFIG_SHELL=$(BASH) \
+		CC="$(CC)" CCLD="$(LD)" CXX="$(CXX)" CXXLD="$(LD)" \
+		/bin/bash ./configure --enable-static --disable-shared --with-pic --enable-cxx \
 			--disable-assembly gmp_cv_asm_underscore=yes
-	@cd $(LIBGOMPDIR) && rm -f ./shtool && ln -s $(shell which shtool) shtool && \
+	@cd $(LIBGOMPDIR) && rm -f ./shtool && cp libtool-dist libtool && \
 		CC="$(CC_LIBGOMP)" \
 		FC="$(GFORTRAN)" \
 		CFLAGS="$(CFLAGS_LIBGOMP)" \
@@ -180,10 +196,14 @@ make_runLibDepsConsfigureScripts:
 		FCFLAGS="$(FCFLAGS_LIBGOMP)" \
 		READLINK="$(READLINK)" \
 		RANLIB="$(RANLIB)" \
-		CC="$(CC)" CCLD="$(CC)" CXX="$(LD)" CXXLD="$(LD)" \
-		./configure --enable-static --disable-shared --disable-tls \
-			--disable-werror --disable-assembly \
-			gmp_cv_asm_underscore=yes gcc_cv_use_emutls=no
+		CONFIG_SHELL=$(BASH) \
+		LIBTOOL=$(shell which libtool) \
+		CC="$(CC)" CCLD="$(LD)" CXX="$(CXX)" CXXLD="$(LD)" \
+		/bin/bash ./configure --srcdir=. \
+			--enable-static --disable-shared --disable-tls \
+			--disable-werror --disable-assembly --disable-dependency-tracking \
+			gmp_cv_asm_underscore=yes gcc_cv_use_emutls=no && \
+		cp libtool-dist libtool
 	@cd $(GTFOLDMAKEDIR) && \
 		CFLAGS="$(CFLAGS_GTFOLD)" \
 		CXXFLAGS="$(CXXFLAGS_GTFOLD)" \
@@ -201,8 +221,10 @@ $(LIBGMPSTATIC):
 make_libgomp: $(LIBGOMPSTATIC).a $(LIBGOMPSTATIC).so
 
 $(LIBGOMPSTATIC).%:
-	@cd $(LIBGOMPDIR) && make libgomp.la
-	@/bin/bash Scripts/InstallMacRenameSymbols.sh $(LIBGOMPDIR)/.libs/libgomp.a
+	@cd $(LIBGOMPDIR) && make libgomp.la 
+	#@cd $(LIBGOMPDIR) && ld -r -o tmp.otemp *.o && rm -f tmp.o && \
+		nm -u tmp.otemp && ar rvs temp.a tmp.otemp && mv temp.a .libs/libgomp.a && rm -f tmp.otemp
+	@/bin/bash BuildScripts/InstallMacRenameSymbols.sh $(LIBGOMPDIR)/.libs/libgomp.a
 
 make_GTFold:
 	@cd $(GTFOLDMAKEDIR)/src && \
@@ -230,7 +252,8 @@ $(OBJBUILDDIR)/$(MODULENAME): $(GTFOLD_PYTHON_OBJECTS)
 clean:
 	@rm -f $(GTFOLD_PYTHON_OBJECTS) *.code $(GTFOLD_MODULENAME) $(OBJBUILDDIR)/$(MODULENAME) \
 		$(GTFPYTHONSRC)/GTFoldDataDir.c $(GTFPYTHONLIB)/GTFoldPythonConfig.py \
-		$(OBJBUILDDIR)/*
+		$(OBJBUILDDIR)/* LocalBashConfigInstalled.lock
+	@rm -rf ctfiles/ *.txt *.samples *.frequency *.pfarrays *.out *.energy *.ct
 	@rm -rf $(GTFPYTHONLIB)/__pycache__ $(GTFPYTHONLIB)/*.pyc
 	@cd $(GTFOLDMAKEDIR) && make clean || echo "make clean failed (GTFold) ... "
 	@cd $(LIBGMPDIR) && make distclean || echo "make clean failed (libgmp) ... "
@@ -238,27 +261,34 @@ clean:
 	@make make_runLibDepsConsfigureScripts
 
 local-clean:
-	@rm -f $(GTFOLD_PYTHON_OBJECTS) *.code $(GTFOLD_MODULENAME) $(OBJBUILDDIR)/$(MODULENAME) $(OBJBUILDDIR)/* \
-		$(GTFPYTHONSRC)/GTFoldDataDir.c $(GTFPYTHONLIB)/GTFoldPythonConfig.py
-	@rm -rf $(GTFPYTHONLIB)/__pycache__ $(GTFPYTHONLIB)/*.pyc
+	-rm -rf ctfiles/ *.txt *.samples *.frequency *.pfarrays *.out *.energy *.ct
+	-rm -f $(GTFOLD_PYTHON_OBJECTS) *.code $(GTFOLD_MODULENAME) $(OBJBUILDDIR)/$(MODULENAME) $(OBJBUILDDIR)/* \
+	-rm -rf $(GTFPYTHONLIB)/__pycache__ $(GTFPYTHONLIB)/*.pyc
+	-cp $(GTFPYTHONSRC)/GTFoldDataDir.c $(GTFPYTHONSRC)/GTFoldDataDir.c.bak
+	-cp $(GTFPYTHONLIB)/GTFoldPythonConfig.py $(GTFPYTHONLIB)/GTFoldPythonConfig.py.bak 
+	-rm -rf $(GTFPYTHONSRC)/GTFoldDataDir.c $(GTFPYTHONLIB)/GTFoldPythonConfig.py
 	@cd $(GTFOLDMAKEDIR) && make clean
 
 test: make_GTFoldPython
 	@rm -rf $(GTFPYTHONLIB)/*.pyc $(GTFPYTHONLIB)/__pycache__
-	@$(BASH) -c "source ~/.bashrc || source ~/.bash_profile" && \
-		$(PYTHON3RT) $(GTFPYTHONLIB)/GTFoldPythonUnitTests.py
+	@$(BASH) ./BuildScripts/RunLibGTFoldPythonUnitTests.sh
 
 install: make_GTFoldPython bash-configure
 	@echo "Make sure to run `source ~/.bashrc || ~/.bash_profile` when you are done!"
 
 bash-configure:
-	@$(BASH) Scripts/InstallSetupBash.sh
+	@$(BASH) BuildScripts/InstallSetupBash.sh
 
-$(GTFPYTHONSRC)/GTFoldDataDir.c:
-	@$(BASH) Scripts/InstallConfigGTFoldDataDirSource.sh
+git-add-all:
+	-git add PythonLibrarySrc/*.{py,py.in} PythonInterfaceSrc/*.{c,cpp,h,c.in}
+	-git add Makefile BuildScripts/*.sh Testing/*.{py,sh} Testing/* 
+	-git add SampleScripts/*.{py,sh} Utils/*.{sh,py} Docs/*
+
+$(GTFPYTHONSRC)/GTFoldDataDir.c: $(GTFPYTHONLIB)/GTFoldPythonConfig.py
+	@$(BASH) BuildScripts/InstallConfigGTFoldDataDirSource.sh
 
 $(GTFPYTHONLIB)/GTFoldPythonConfig.py:
-	@$(BASH) Scripts/InstallConfigPlatformExports.sh
+	@$(BASH) BuildScripts/InstallConfigPlatformExports.sh
 
 $(OBJBUILDDIR)/ANSIFormatPrinting.o: $(GTFPYTHONSRC)/PythonConfig.h \
 	$(GTFPYTHONSRC)/Utils.h \
@@ -280,7 +310,8 @@ $(OBJBUILDDIR)/ErrorHandling.o: $(GTFPYTHONSRC)/PythonConfig.h \
 	$(CC) $(CFLAGS) -c $(GTFPYTHONSRC)/ErrorHandling.c -o $@
 
 $(OBJBUILDDIR)/GTFoldPython.o: $(GTFPYTHONSRC)/PythonConfig.h \
-	$(GTFPYTHONSRC)/*.h $(GTFPYTHONSRC)/GTFoldPython.c
+	$(GTFPYTHONSRC)/*.h $(GTFPYTHONSRC)/ErrorHandling.c \
+	$(GTFPYTHONSRC)/GTFoldPython.c
 	$(CC) $(CFLAGS) -c $(GTFPYTHONSRC)/GTFoldPython.c -o $@
 
 $(OBJBUILDDIR)/LoadThermoParams.o: $(GTFPYTHONSRC)/PythonConfig.h \
@@ -313,4 +344,3 @@ $(OBJBUILDDIR)/Utils.o: $(GTFPYTHONSRC)/PythonConfig.h \
 	$(GTFPYTHONSRC)/ErrorHandling.h \
 	$(GTFPYTHONSRC)/Utils.h $(GTFPYTHONSRC)/Utils.c
 	$(CC) $(CFLAGS) -c $(GTFPYTHONSRC)/Utils.c -o $@
-

@@ -27,7 +27,7 @@ int OUTPUT_FILES_CONFIG = 0;
 
 void ConfigureOutputFileSettings(void) {
     if(OUTPUT_FILES_CONFIG) {
-         SetLastErrorCode(GTFPYTHON_ERRNO_OUTFILESCFG, NULL);
+      //SetLastErrorCode(GTFPYTHON_ERRNO_OUTFILESCFG, NULL);
 	 return;
     }
     // If output dir specified
@@ -130,10 +130,10 @@ void ValidateOptions(void) {
     } 
     else if(CALC_PART_FUNC && RND_SAMPLE){ // both partition function and sample
             if(!SILENT && VERBOSE) {
-	        fprintf(CONFIG_STDMSGOUT, 
-		        "Program proceeding with sampling as both partition function "
-			"calculation and sampling calculation option are used.\n\n");
-	    }
+	            fprintf(CONFIG_STDMSGOUT, 
+		               "Program proceeding with sampling as both partition function "
+			          "calculation and sampling calculation option are used.\n\n");
+	       }
             CALC_PART_FUNC = false;
     }
     else if(!CALC_PART_FUNC && !RND_SAMPLE){ // neither partition function nor sample
@@ -164,7 +164,7 @@ void ValidateOptions(void) {
 	    }
     }
     if (is_check_for_duplicates_enabled != 0 && is_check_for_duplicates_enabled != 1) {
-            is_check_for_duplicates_enabled = 0;
+            is_check_for_duplicates_enabled = -1;
             if(!SILENT && VERBOSE) {
 		    fprintf(CONFIG_STDMSGOUT, 
 			    "Ignoring --duplicatecheck option as it accepts only numbers \n"
@@ -182,8 +182,8 @@ void * ConfigureBoltzmannMainRuntimeParameters(MFEStructRuntimeArgs_t *rtArgs) {
 	  SetLastErrorCode(GTFPYTHON_ERRNO_INVALID_CARGS, NULL);
           return NULL;
      }
-     CALC_PART_FUNC = 1;
-     RND_SAMPLE = 1;
+     //CALC_PART_FUNC = 1;
+     //RND_SAMPLE = 1;
      g_LIMIT_DISTANCE = LIMIT_DISTANCE;
      g_contactDistance = contactDistance;
      if(InitGTFoldMFEStructureData(rtArgs) != GTFPYTHON_ERRNO_OK) {
@@ -209,6 +209,7 @@ void * ConfigureBoltzmannMainRuntimeParameters(MFEStructRuntimeArgs_t *rtArgs) {
                scaleFactor=1.07;
           }
      }
+     ValidateOptions();
      if(PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER == 0){
           decideAutomaticallyForAdvancedDoubleSpecifier();
      }
@@ -222,12 +223,12 @@ void * ConfigureBoltzmannMainRuntimeParameters(MFEStructRuntimeArgs_t *rtArgs) {
      if (LIMIT_DISTANCE) {
           if (!SILENT && VERBOSE && rtArgs->numBases < (unsigned int) contactDistance) {
                fprintf(CONFIG_STDMSGOUT, 
-		       "\nContact distance limit is higher than the sequence length. \n"
+		             "\nContact distance limit is higher than the sequence length. \n"
                        "Continuing without restraining contact distance.\n");
           }
           else if(!SILENT && VERBOSE) 
 	       fprintf(CONFIG_STDMSGOUT, 
-		       "\nLimiting contact distance to %d\n", contactDistance);
+		          "\nLimiting contact distance to %d\n", contactDistance);
      }
      if(scaleFactor != 0.0){
           double mfe = ComputeMFEStructure(rtArgs);
@@ -239,7 +240,7 @@ void * ConfigureBoltzmannMainRuntimeParameters(MFEStructRuntimeArgs_t *rtArgs) {
 PyObject * HandleBPP(MFEStructRuntimeArgs_t *rtArgs) {
      if(rtArgs == NULL) {
           SetLastErrorCode(GTFPYTHON_ERRNO_INVALID_CARGS, NULL);
-	  return ReturnPythonNone();
+	     return ReturnPythonNone();
      }
      double **_Q,  **_QM, **_QB, **_P;
      _Q  = mallocTwoD(rtArgs->numBases + 1, rtArgs->numBases + 1);
@@ -259,11 +260,11 @@ PyObject * HandleBPP(MFEStructRuntimeArgs_t *rtArgs) {
      for(int i = 1; i <= rtArgs->numBases; i++) {
           for(int j = 1; j < i; j++) {
                PyObject *bppProbPair = PyTuple_New(3);
-	       PyTuple_SetItem(bppProbPair, 0, PyLong_FromLong(i));
-	       PyTuple_SetItem(bppProbPair, 1, PyLong_FromLong(j));
-	       PyTuple_SetItem(bppProbPair, 2, PyFloat_FromDouble(_P[MIN(i,j)][MAX(i,j)]));
-	       Py_INCREF(bppProbPair);
-	       PyList_SetItem(pyStructObj, lstIdx++, bppProbPair);
+	          PyTuple_SetItem(bppProbPair, 0, PyLong_FromLong(i));
+	          PyTuple_SetItem(bppProbPair, 1, PyLong_FromLong(j));
+	          PyTuple_SetItem(bppProbPair, 2, PyFloat_FromDouble(_P[MIN(i,j)][MAX(i,j)]));
+	          Py_INCREF(bppProbPair);
+	          PyList_SetItem(pyStructObj, lstIdx++, bppProbPair);
 	  }
      }
      Py_INCREF(pyStructObj);
@@ -296,15 +297,15 @@ PyObject * PackageBatchSampleOutputForPython(RawSampleDataList_t rawSampleData) 
           const double& estimated_p =  (double) pp.first / (double) num_rnd;
           const double& energy = pp.second;
           double actual_p = pow(2.718281, -1.0 * energy * 100 / RT) / U;
-	  pgState = PyGILState_Ensure();
-	  PyObject *structTuple = PyTuple_New(4);
-	  PyTuple_SetItem(structTuple, 0, PyFloat_FromDouble(estimated_p));
-	  PyTuple_SetItem(structTuple, 1, PyFloat_FromDouble(actual_p));
+	     pgState = PyGILState_Ensure();
+	     PyObject *structTuple = PyTuple_New(4);
+	     PyTuple_SetItem(structTuple, 0, PyFloat_FromDouble(estimated_p));
+	     PyTuple_SetItem(structTuple, 1, PyFloat_FromDouble(actual_p));
           PyTuple_SetItem(structTuple, 2, PyFloat_FromDouble(energy));
-	  PyTuple_SetItem(structTuple, 3, PyUnicode_FromString(ss.c_str()));
-	  Py_INCREF(structTuple);
-	  PyList_SetItem(structObjList, lstIdx++, structTuple);
-	  PyGILState_Release(pgState);
+	     PyTuple_SetItem(structTuple, 3, PyUnicode_FromString(ss.c_str()));
+	     Py_INCREF(structTuple);
+	     PyList_SetItem(structObjList, lstIdx++, structTuple);
+	     PyGILState_Release(pgState);
      }
      pgState = PyGILState_Ensure();
      Py_INCREF(structObjList);
@@ -314,17 +315,17 @@ PyObject * PackageBatchSampleOutputForPython(RawSampleDataList_t rawSampleData) 
 
 template<typename T>
 RawSampleDataList_t HandleD2Sample(StochasticTracebackD2<T> std2, int N, 
-		       MFEStructRuntimeArgs_t *rtArgs) {
+		                         MFEStructRuntimeArgs_t *rtArgs) {
      RawSampleDataList_t rawStructList;
-     if(!SILENT) fprintf(CONFIG_STDMSGOUT, "\nComputing stochastic traceback...\n");
+     if(!SILENT) fprintf(CONFIG_STDMSGOUT, "\nComputing stochastic traceback (D2 Sample) ...\n");
      int pf_count_mode = 0;
      if(PF_COUNT_MODE) pf_count_mode=1;
      int no_dangle_mode = 0;
      if(CALC_PF_DO) no_dangle_mode=1;
      t1 = get_seconds();
      std2.initialize(rtArgs->numBases, pf_count_mode, no_dangle_mode, print_energy_decompose, 
-		     PF_D2_UP_APPROX_ENABLED, ST_D2_ENABLE_CHECK_FRACTION, energyDecomposeOutFile, 
-		     scaleFactor);
+		           PF_D2_UP_APPROX_ENABLED, ST_D2_ENABLE_CHECK_FRACTION, energyDecomposeOutFile, 
+		           scaleFactor);
      t1 = get_seconds() - t1;
      if(!SILENT) fprintf(CONFIG_STDMSGOUT, 
 		         "D2 Traceback initialization (partition function computation) "
@@ -449,8 +450,8 @@ RawSampleDataList_t ComputeDsBatchSample(int N, int baseSeqLength, const char *b
                     ss2 << ctFileDumpDir << "/" << seqname << "_" << count << ".ct";
                     save_ct_file_from_structure(ss2.str().c_str(), baseSeq, energy, structure);
 		    if(WRITEAUXFILES) {
-                         summaryoutfile << ss2.str() << " " << ensemble.substr(1);
-			 summaryoutfile << " " << energy << std::endl;
+                    summaryoutfile << ss2.str() << " " << ensemble.substr(1);
+			     summaryoutfile << " " << energy << std::endl;
 		    }
 	       }
                //// data dump code ends here again
@@ -505,7 +506,7 @@ PyObject * HandleDsSample(int N, MFEStructRuntimeArgs_t *rtArgs) {
           fprintf(CONFIG_STDMSGOUT, 
 	          "\nComputing stochastic traceback in -dS mode ..., "
 	          "pf_count_mode=%d, no_dangle_mode=%d\n", pf_count_mode, no_dangle_mode);
-          fprintf(CONFIG_STDMSGOUT, "\nComputing stochastic traceback...\n");
+          fprintf(CONFIG_STDMSGOUT, "\nComputing stochastic traceback (Ds Sample) ...\n");
      }
      double U = calculate_partition(rtArgs->numBases, pf_count_mode, no_dangle_mode);
      t1 = get_seconds();

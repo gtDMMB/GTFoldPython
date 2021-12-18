@@ -1,0 +1,29 @@
+#!/bin/bash
+
+PYTHON3=$(which python3)
+READLINK=$(which readlink)
+BASHRC_CFGFILE=
+
+PLATFORM=$(uname -s)
+if [[ "$PLATFORM" == "Darwin" ]]; then
+     SED=$(which gsed)
+     READLINK=$(which greadlink)
+     BASHRC_CFGFILE=.bash_profile
+else
+     BASHRC_CFGFILE=.bashrc
+fi
+
+BASHRC_CFGFILE=$($READLINK -f ~/$BASHRC_CFGFILE)
+source $BASHRC_CFGFILE
+
+GTFPYTHON_INSTALL_PATH=`$READLINK -f ./PythonLibrarySrc`
+GTFPYTHON_INSTALL_LIBS_PATH=`$READLINK -f ./Lib`
+
+export PYTHONPATH="$GTFPYTHON_INSTALL_PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GTFPYTHON_INSTALL_PATH"
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$GTFPYTHON_INSTALL_LIBS_PATH"
+export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
+$PYTHON3 `$READLINK -f $GTFPYTHON_INSTALL_PATH/../Testing/RunBasicInterface.py`
+
+exit 0

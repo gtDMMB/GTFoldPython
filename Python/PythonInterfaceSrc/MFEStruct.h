@@ -21,6 +21,14 @@ struct _MFEStructRuntimeArgs_t {
 
 typedef struct _MFEStructRuntimeArgs_t MFEStructRuntimeArgs_t;
 
+extern int lastBaseSequenceLength;
+
+#define SetRTArgsSequenceLength(rtArgsRef, baseSeqLength)         \
+     do {                                                         \
+          rtArgsRef.numBases = baseSeqLength;                     \
+          lastBaseSequenceLength = baseSeqLength;                 \
+     } while(0)
+
 void InitMFEStructRuntimeArgs(MFEStructRuntimeArgs_t *rtArgs);
 void FreeMFEStructRuntimeArgs(MFEStructRuntimeArgs_t *rtArgs);
 int InitGTFoldMFEStructureData(MFEStructRuntimeArgs_t *rtArgs);

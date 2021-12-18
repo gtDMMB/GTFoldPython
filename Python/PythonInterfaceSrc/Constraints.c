@@ -13,6 +13,7 @@
 #include "include/mfe_main.h"
 #include "include/options.h"
 #include "include/shapereader.h"
+#include "include/global.h"
 
 #include "Constraints.h"
 #include "ErrorHandling.h"
@@ -21,16 +22,16 @@
 
 Constraint_t ParseSingleConstraint(ConsCType_t consTypeArr) {
      Constraint_t cons = (Constraint_t) {
-          (char) consTypeArr[0], 
-	  consTypeArr[1],
-	  consTypeArr[2],
-	  consTypeArr[3]
+           consTypeArr[0], 
+   	      consTypeArr[1],
+	      consTypeArr[2],
+	      consTypeArr[3]
      };
      return cons;
 }
 
 Constraint_t * ParseConstraintsList(ConsListCType_t consList, int consLength) {
-     if(consList == NULL || consLength < 0) {
+     if(consList == NULL || sizeof(consList) == 0 || consLength < 0) {
           SetLastErrorCode(GTFPYTHON_ERRNO_INVALID_CARGS, NULL);
 	  return NULL;
      }
@@ -97,8 +98,11 @@ int CheckForcedConstraintValid(Constraint_t cons, int prevConsLength, int baseSe
 }
 
 int ParseForcedConstraint(Constraint_t cons, int prevConsLength) {
-     FBP[prevConsLength][0] = (((int) cons.i) << 16) | cons.j;
-     FBP[prevConsLength][1] = ((int) cons.k) << 16;
+     //FBP[prevConsLength][0] = (((int) cons.i) << 16) | cons.j;
+     //FBP[prevConsLength][1] = ((int) cons.k) << 16;
+     FBP[prevConsLength][0] = (int) cons.i;
+     FBP[prevConsLength][1] = (int) cons.j;
+     FBP[prevConsLength][2] = (int) cons.k;
      return GTFPYTHON_ERRNO_OK;
 }
 
@@ -159,20 +163,24 @@ int ParseProhibitedConstraint(Constraint_t cons, int prevConsLength) {
      //PBP[prevConsLength][0] = lowerInt;
      //upperInt = (upperInt << 16) & 0xffff0000;
      //PBP[prevConsLength][1] = upperInt;
-     PBP[prevConsLength][0] = (((int) cons.i) << 16) | cons.j;
-     PBP[prevConsLength][1] = ((int) cons.k) << 16;
+     //
+     //PBP[prevConsLength][0] = (((int) cons.i) << 16) | cons.j;
+     //PBP[prevConsLength][1] = ((int) cons.k) << 16;
+     PBP[prevConsLength][0] = (int) cons.i;
+     PBP[prevConsLength][1] = (int) cons.j;
+     PBP[prevConsLength][2] = (int) cons.k;
      return GTFPYTHON_ERRNO_OK;
 }
 
 int LoadGTFoldConstraints(Constraint_t *consList, int consLength, int baseSeqLength) {
-     if(consList == NULL) {
-	  return GTFPYTHON_ERRNO_OK; // No normal constraints ... 
+     if(consList == NULL || sizeof(consList) == 0 || consLength == 0) {
+	     return GTFPYTHON_ERRNO_OK; // No normal constraints ... 
      }
      nFBP = CountForcedConstraints(consList, consLength);
      nPBP = CountProhibitedConstraints(consList, consLength);
      if(nFBP + nPBP == 0) {
-	  SetLastErrorCode(GTFPYTHON_ERRNO_OK, "No Constraints found.");
-	  return ErrorCodeErrno.errorCode;
+	     SetLastErrorCode(GTFPYTHON_ERRNO_OK, "No Constraints found.");
+	     return ErrorCodeErrno.errorCode;
      }
      FBP = (int **) calloc(nFBP, sizeof(int *));
      PBP = (int **) calloc(nPBP, sizeof(int *));
@@ -185,7 +193,10 @@ int LoadGTFoldConstraints(Constraint_t *consList, int consLength, int baseSeqLen
      }
      int fcCount = 0, pcCount = 0;
      for(int ci = 0; ci < consLength; ci++) {
-	  int addConsStatus = GTFPYTHON_ERRNO_OK;
+	  if(CheckForcedConstraintValid(consList[ci], ci, baseSeqLength)) {
+          return GTFPYTHON_ERRNO_INVALID_CONSTRAINT;
+       }
+       int addConsStatus = GTFPYTHON_ERRNO_OK;
           if(consList[ci].consType == F && 
 	      !CheckForcedConstraintValid(consList[ci], ci, baseSeqLength)) {
 	       addConsStatus = ParseForcedConstraint(consList[ci], fcCount++);
@@ -212,8 +223,16 @@ int InitGTFoldConstraints(struct _MFEStructRuntimeArgs_t *rtArgs) {
      if(rtArgs == NULL) {
           return GTFPYTHON_ERRNO_INVALID_CARGS;
      }
-     CONS_ENABLED = 1;
-     enable_constraints(true);
+     if(rtArgs ->numConstraints > 0 || rtArgs->numSHAPEConstraints > 0) {
+          CONS_ENABLED = 1;
+          enable_constraints(true);
+     }
+     else {
+          CONS_ENABLED = 0;
+          enable_constraints(false);
+          SetLastErrorCode(GTFPYTHON_ERRNO_OK, NULL);
+          return GTFPYTHON_ERRNO_OK;
+     }
      int baseSeqLength = rtArgs->numBases;
      int loadConsStatus = LoadGTFoldConstraints(rtArgs->mfeConstraints, rtArgs->numConstraints, baseSeqLength);
      if(loadConsStatus != GTFPYTHON_ERRNO_OK) {
@@ -221,14 +240,14 @@ int InitGTFoldConstraints(struct _MFEStructRuntimeArgs_t *rtArgs) {
      }
      loadConsStatus = LoadGTFoldSHAPEConstraints(rtArgs->mfeSHAPEConstraints, rtArgs->numSHAPEConstraints, baseSeqLength);
      if(loadConsStatus != GTFPYTHON_ERRNO_OK) {
-	  return loadConsStatus;
+	     return loadConsStatus;
      }
      // initialize extern'ed varaibles:
      int i, j, it, k, a, b;
      ind = (int *) calloc((baseSeqLength + 1), sizeof(int));
      if (ind == NULL) {
           SetLastErrorCode(GTFPYTHON_ERRNO_NOMEM, "Cannot allocate variable 'ind'");
-	  return ErrorCodeErrno.errorCode;
+	     return ErrorCodeErrno.errorCode;
      }
      for(i = 1; i <= baseSeqLength; i++){
           ind[i] = (i * (i - 1)) >>  1; // n * (n - 1) / 2
@@ -237,7 +256,7 @@ int InitGTFoldConstraints(struct _MFEStructRuntimeArgs_t *rtArgs) {
      BP = (int *) calloc(LLL, sizeof(int));
      if(BP == NULL) {
           SetLastErrorCode(GTFPYTHON_ERRNO_NOMEM, "Cannot allocate variable 'constraints'");
-	  return ErrorCodeErrno.errorCode;
+	     return ErrorCodeErrno.errorCode;
      }
      // ZS: initialize all basepairing constraints to 0 (default is nothing known)
      for(i = 0; i < LLL; i++){
@@ -384,12 +403,15 @@ int InitGTFoldConstraints(struct _MFEStructRuntimeArgs_t *rtArgs) {
 }
 
 void PrintGTFoldConstraints(Constraint_t *consList, int numCons) {
+     if(consList == NULL || sizeof(consList) == 0 || numCons <= 0) {
+          return;
+     }
      for(int ci = 0; ci < numCons; ci++) {
           fprintf(CONFIG_STDMSGOUT, "  >> CONS #% 3d: %c % 2d % 2d % 2d\n", ci + 1, 
 		  consList[ci].consType, consList[ci].i, consList[ci].j, consList[ci].k);
      }
      fprintf(CONFIG_STDMSGOUT, "\n");
-     print_constraints(numCons);
+     //print_constraints(numCons);
 }
 
 void FreeGTFoldConstraints(int numCons) {
@@ -402,7 +424,7 @@ int LoadGTFoldSHAPEConstraints(SHAPEConstraint_t *scList, int sconsLength, int b
      }
      else if(sconsLength < 0 || baseSeqLength <= 0) {
           SetLastErrorCode(GTFPYTHON_ERRNO_INVALID_CARGS, NULL);
-	  return ErrorCodeErrno.errorCode;
+	     return ErrorCodeErrno.errorCode;
      }
      // a wrapper around GTFold's shapereader.cc::readSHAPEarray:
      SHAPE_ENABLED = 1;
@@ -415,28 +437,31 @@ int LoadGTFoldSHAPEConstraints(SHAPEConstraint_t *scList, int sconsLength, int b
      int opStatus = GTFPYTHON_ERRNO_OK;
      for(int ci = 0; ci < sconsLength; ci++) {
           int consPos = scList[ci].basePos;
-	  double shapeNum = scList[ci].shape;
-	  if(consPos <= baseSeqLength) {
+	     double shapeNum = scList[ci].shape;
+	     if(consPos <= baseSeqLength) {
                SHAPEarray[consPos] = shapeNum;
-	       SHAPEenergies[consPos] = calcShapeEnergy(shapeNum);
-	  }
-	  else {
-	       if(!*CONFIG_QUIET) {
-	            fprintf(CONFIG_STDMSGOUT, 
-			    "Invalid SHAPE position indicator (ignoring line): [#%d] %d, %g\n", 
-                            ci + 1, consPos, shapeNum);
-	       }
-	       opStatus = GTFPYTHON_ERRNO_INVALID_CONSTRAINT;
-	  }
+	          SHAPEenergies[consPos] = calcShapeEnergy(shapeNum);
+	     }
+	     else {
+	          if(!*CONFIG_QUIET) {
+	               fprintf(CONFIG_STDMSGOUT, 
+			             "Invalid SHAPE position indicator (ignoring line): [#%d] %d, %g\n", 
+                             ci + 1, consPos, shapeNum);
+	          }
+	          opStatus = GTFPYTHON_ERRNO_INVALID_CONSTRAINT;
+	     }
      }
      return opStatus;
 }
 
 void PrintGTFoldSHAPEConstraints(SHAPEConstraint_t *scList, int numCons) {
+     if(scList == NULL || sizeof(scList) == 0 || numCons <= 0) {
+          return;
+     }
      for(int ci = 0; ci < numCons; ci++) {
           fprintf(CONFIG_STDMSGOUT, "  >> SHAPE CONS #% 3d: % 3d, %1.3g\n", ci + 1, 
 		  scList[ci].basePos, scList[ci].shape);
      }
      fprintf(CONFIG_STDMSGOUT, "\n");
-     print_constraints(numCons);
+     //print_constraints(numCons);
 }

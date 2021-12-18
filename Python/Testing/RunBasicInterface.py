@@ -5,7 +5,7 @@ from GTFoldPythonImportAll import *
 
 ## Initialize the library:
 print("*** Initializing the library")
-GTFP.Init()
+#GTFP.Init()
 GTFP.Config(quiet = False, debugging = False, verbose = False, stdmsgout = "stderr")
 
 ## Display detailed help, and help on a specific topic:
@@ -20,7 +20,7 @@ configSettings = {
     'outputprefix'    : "testrun_", 
     'writeauxfiles'   : 1, 
     'numthreads'      : 2, 
-    'calcpartition'   : 0, 
+    'calcpartition'   : 1, 
     'printarrays'     : 0, 
     'separatectfiles' : 1, 
     'ctfilesdir'      : "ctfiles",            # need not already exist
@@ -39,6 +39,10 @@ GTFP.SetPrefilterParameter(-1)   # same as if not set
 #GTFP.SetThermodynamicParameters(TURNER04, None)
 GTFP.SetThermodynamicParametersFromDefaults(TURNER04)
 
+## OR, to use a custom built data set from `gtmodify`:
+#customThermoParamsPath = os.path.abspath(os.path.join("./Testing/ExtraGTFoldThermoData/FromGTModify/path/to/datasetdir"))
+#GTFP.SetThermodynamicParameters(DEFAULT, customThermoParamsPath)
+
 ## Print the runtime configuration that we ust changed:
 print("*** Printing out the active runtime configuration")
 GTFP.PrintRunConfiguration()
@@ -54,7 +58,7 @@ baseSeqFPCons = "GCAUUGGAGAUGGCAUUCCUCCAUUAACAAACCGCUGCGCCCGUAGCAGCUGAUGAUGCCUAC
 ## Constraints: 
 consListDefault = []
 # Load F/P constraints from file: ....<<<<<..((((((.>>>>>..........(((((.......)))))....))))))......
-consListFP = GTFPUtils.ReadFPConstraintsFromFile("../Testing/SampleFiles/demo2.cons") 
+consListFP = GTFPUtils.ReadFPConstraintsFromFile("../Testing/TestData/tRNA/yeast.fa.cons")
 consListFP2 = GTFPUtils.GetFPConstraintsFromString("....<<<<<..((((((.>>>>>..........(((((.......)))))....))))))......")
 consListSHAPE = GTFPUtils.ReadSHAPEConstraintsFromFile("../Testing/SampleFiles/demo1.shape")
 
@@ -79,11 +83,11 @@ for (idx, (i, j, p)) in enumerate(bppProbsList):
     print("[#{3}] Base Pair {0} <-> {1} @ probability {2}".format(i, j, p, idx + 1))
 
 ## Sample some structures from the Boltzmann distribution
+GTFP.PrintRunConfiguration()
 print("*** Sampling structures from the Boltzmann distribution")
 N = 3
 structsList = GTFP.SampleBoltzmannStructures(baseSeqShort, N, consListDefault)
 #structsList = GTFP.SampleBoltzmannStructuresSHAPE(baseSeqShort, N, consListSHAPE)
-# TODO: print 
 for (idx, (ep, ap, e, struct)) in enumerate(structsList):
     print("[#% 2d] Structure with estimated/actual probability %g/%g and energy %g" % (idx + 1, ep, ap, e))
     print("        {0}".format(struct))

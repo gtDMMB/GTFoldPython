@@ -12,8 +12,8 @@
 struct _MFEStructRuntimeArgs_t;
 //typedef struct _MFEStructRuntimeArgs_t _MFEStructRuntimeArgs_t;
 
-#define P                            ((short) 'P')
-#define F                            ((short) 'F')
+#define P                            ((int) 0x00000000) //((short) 80) //((short) 'P')
+#define F                            ((int) 0x01010101) //((short) 70) //((short) 'F')
 
 // Each constraint is specified as a 3-tuple, [i, j, k]: 
 // Constraint types:
@@ -26,14 +26,14 @@ struct _MFEStructRuntimeArgs_t;
 // P i j k   # prohibit (i,j)(i+1,j-1),.......,(i+k-1,j-k+1) pairs.
 // P i 0 k   # make bases from i to i+k-1 single stranded bases.
 typedef struct {
-     short consType;
-     short i; 
-     short j; 
-     short k;
+     int consType;
+     int i; 
+     int j; 
+     int k;
 } Constraint_t;
 
-typedef short ConsCType_t[4];
-typedef short ConsListCType_t[][4];
+typedef int ConsCType_t[4];
+typedef int ConsListCType_t[][4];
 
 Constraint_t ParseSingleConstraint(ConsCType_t consTypeArr);
 Constraint_t * ParseConstraintsList(ConsListCType_t consList, int consLength);

@@ -12,6 +12,7 @@
 #include "LoadThermoParams.h"
 #include "ErrorHandling.h"
 #include "Utils.h"
+#include "GTFoldDataDir.c"
 
 const ThermoParams_t STATIC_THERMO_PARAMS_CONFIG[] = {
 	{
@@ -24,12 +25,12 @@ const ThermoParams_t STATIC_THERMO_PARAMS_CONFIG[] = {
 	     "tloop.DAT", 
 	     "tstackh.DAT",
 	     "tstacki.DAT", 
-             "tstackm.DAT", 
+          "tstackm.DAT", 
 	     "tstacke.DAT",
 	     "", 
 	     "int21.DAT", 
 	     "int22.DAT", 
-             "int11.DAT"
+          "int11.DAT"
 	},
 	{
 	     "GTFold", 
@@ -41,63 +42,63 @@ const ThermoParams_t STATIC_THERMO_PARAMS_CONFIG[] = {
 	     "tloop.DAT", 
 	     "tstackh.DAT",
 	     "tstacki.DAT", 
-             "tstackm.DAT", 
+          "tstackm.DAT", 
 	     "tstacke.DAT",
 	     "", 
 	     "int21.DAT", 
 	     "int22.DAT", 
-             "int11.DAT"
+          "int11.DAT"
      },
      {
 	     "RNAStructure", 
 	     NULL,
-             "miscloop.DAT", 
+          "miscloop.DAT", 
 	     "dangle.DAT",
 	     "stack.DAT", 
 	     "loop.DAT", 
 	     "tloop.DAT", 
 	     "tstackh.DAT",
 	     "tstacki.DAT", 
-             "tstackm.DAT", 
+          "tstackm.DAT", 
 	     "tstacke.DAT",
 	     "tstacki23.DAT", 
 	     "int21.DAT", 
 	     "int22.DAT", 
-             "int11.DAT"
+          "int11.DAT"
      },
      {
 	     "RNAFold", 
 	     &RNAMODE, 
-             "miscloop.DAT", 
+          "miscloop.DAT", 
 	     "dangle.DAT",
 	     "stack.DAT", 
 	     "loop.DAT", 
 	     "tloop.DAT", 
 	     "tstackh.DAT",
 	     "tstacki.DAT", 
-             "tstackm.DAT", 
+          "tstackm.DAT", 
 	     "tstacke.DAT",
 	     "", 
 	     "int21.DAT", 
 	     "int22.DAT", 
-             "int11.DAT"
+          "int11.DAT"
      },
      {
 	     "UNAFold",
 	     &UNAMODE,
-             "miscloop.DAT", 
+          "miscloop.DAT", 
 	     "dangle.DAT",
 	     "stack.DAT", 
 	     "loop.DAT", 
 	     "tloop.DAT", 
 	     "tstackh.DAT",
 	     "tstacki.DAT", 
-             "tstackm.DAT", 
+          "tstackm.DAT", 
 	     "tstacke.DAT",
 	     "tstacki23.DAT", 
 	     "asint1x2.DAT", 
 	     "sint4.DAT", 
-             "sint2.DAT"
+          "sint2.DAT"
      },
      {
 	     "Turner04",
@@ -109,13 +110,31 @@ const ThermoParams_t STATIC_THERMO_PARAMS_CONFIG[] = {
 	     "tloop.DAT", 
 	     "tstackh.DAT",
 	     "tstacki.DAT", 
-             "tstackm.DAT", 
+          "tstackm.DAT", 
 	     "tstacke.DAT",
 	     "", 
 	     "int21.DAT", 
 	     "int22.DAT", 
-             "int11.DAT"
+          "int11.DAT"
      },
+     {
+	     "Turner99",
+	     &RNAMODE, 
+	     "miscloop.DAT", 
+	     "dangle.DAT", 
+	     "stack.DAT",
+	     "loop.DAT", 
+	     "tloop.DAT", 
+	     "tstackh.DAT",
+	     "tstacki.DAT", 
+          "tstackm.DAT", 
+	     "tstacke.DAT",
+	     "", 
+	     "int21.DAT", 
+	     "int22.DAT", 
+          "int11.DAT"
+     },
+
 };
 
 const ThermoParams_t *ACTIVE_THERMO_PARAMS = &(STATIC_THERMO_PARAMS_CONFIG[0]);
@@ -126,30 +145,27 @@ int CheckThermodynamicConfig(const ThermoParams_t *tparams, const char *baseSear
 	  return GetLastErrorCode();
      }
      if(!IsDirectory(baseSearchDir) || 
-	!FileExists(tparams->miscLoop, baseSearchDir) || 
-	!FileExists(tparams->dangleValues, baseSearchDir) || 
-	!FileExists(tparams->stackValues, baseSearchDir) || 
-	!FileExists(tparams->loopValues, baseSearchDir) || 
-	!FileExists(tparams->tloopValues, baseSearchDir) || 
-	!FileExists(tparams->tstackhValues, baseSearchDir) || 
-	!FileExists(tparams->tstackiValues, baseSearchDir) || 
-	!FileExists(tparams->int21Values, baseSearchDir) || 
-	!FileExists(tparams->int22Values, baseSearchDir) || 
-	!FileExists(tparams->int11Values, baseSearchDir)) {
+	   !FileExists(tparams->miscLoop, baseSearchDir) || 
+	   !FileExists(tparams->dangleValues, baseSearchDir) || 
+	   !FileExists(tparams->stackValues, baseSearchDir) || 
+	   !FileExists(tparams->loopValues, baseSearchDir) || 
+	   !FileExists(tparams->tloopValues, baseSearchDir) || 
+	   !FileExists(tparams->tstackhValues, baseSearchDir) || 
+	   !FileExists(tparams->tstackiValues, baseSearchDir) || 
+	   !FileExists(tparams->int21Values, baseSearchDir) || 
+	   !FileExists(tparams->int22Values, baseSearchDir) || 
+	   !FileExists(tparams->int11Values, baseSearchDir)) {
           SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, "Loading thermo parameters");
-	  return GTFPYTHON_ERRNO_FNOEXIST;
+	     return GTFPYTHON_ERRNO_FNOEXIST;
      }
      else if(UNAMODE && !FileExists(tparams->tstack23Values, baseSearchDir)) {
-	  SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, "Loading thermo parameters");
-	  return GTFPYTHON_ERRNO_FNOEXIST;
+	     SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, "Loading thermo parameters");
+	     return GTFPYTHON_ERRNO_FNOEXIST;
      }
-     else if(!UNAMODE && !(*TMISMATCH)) {
-	  return GTFPYTHON_ERRNO_OK;
-     }
-     else if(!FileExists(tparams->tstackmValues, baseSearchDir) || 
-             !FileExists(tparams->tstackeValues, baseSearchDir)) {
-	  SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, "Loading thermo parameters");
-	  return GTFPYTHON_ERRNO_FNOEXIST;
+     else if(*TMISMATCH && (!FileExists(tparams->tstackmValues, baseSearchDir) || 
+             !FileExists(tparams->tstackeValues, baseSearchDir))) {
+	     SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, "Loading thermo parameters");
+	     return GTFPYTHON_ERRNO_FNOEXIST;
      }
      return GTFPYTHON_ERRNO_OK;
 }
@@ -159,7 +175,7 @@ int LoadThermodynamicParameters(const ThermoParams_t *tparams, const char *baseS
           SetLastErrorCode(GTFPYTHON_ERRNO_INVALID_CARGS, NULL);
 	  return GetLastErrorCode();
      }
-     else if(CheckThermodynamicConfig(tparams, baseSearchDir)) {
+     else if(CheckThermodynamicConfig(tparams, baseSearchDir) != GTFPYTHON_ERRNO_OK) {
 	  SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, NULL);
 	  return GetLastErrorCode();
      }
@@ -173,9 +189,13 @@ int LoadThermodynamicParameters(const ThermoParams_t *tparams, const char *baseS
      if(stat(EN_DATADIR, &statBuf) == -1){
           fprintf(stderr, "Checking for parameter files in dir '%s', not found.\n", EN_DATADIR);
           fprintf(stderr, "Error: %s\n\n", strerror(errno));
-          errno = EINVAL;
-          exit(-1);
+          strcpy(EN_DATADIR, GTFOLD_DATADIR);
+          SetLastErrorCode(GTFPYTHON_ERRNO_FNOEXIST, NULL);
+          return GTFPYTHON_ERRNO_FNOEXIST;
      }
+     strcpy(GTFOLD_DATADIR, EN_DATADIR);
+     fprintf(stderr, "GTFOLD-DATA-DIR: %s\n", GTFOLD_DATADIR);
+
      initMiscloopValues(tparams->miscLoop,   thermoDataDir);
      initDangleValues(tparams->dangleValues, thermoDataDir);
      initStackValues(tparams->stackValues,   thermoDataDir);
@@ -199,15 +219,15 @@ int LoadThermodynamicParameters(const ThermoParams_t *tparams, const char *baseS
           initInt11Values(tparams->int11Values,   thermoDataDir);
      }
      else {
-	  initInt21Values(tparams->int21Values, thermoDataDir);
+	     initInt21Values(tparams->int21Values, thermoDataDir);
           initInt22Values(tparams->int22Values, thermoDataDir);
           initInt11Values(tparams->int11Values, thermoDataDir);
-	  if(FileExists(tparams->tstackmValues, thermoDataDir)) {
-	       initTstkmValues(tparams->tstackmValues, thermoDataDir);
-	  }
-	  if(FileExists(tparams->tstackeValues, thermoDataDir)) {
-	       initTstkeValues(tparams->tstackeValues, thermoDataDir);
-	  }
+	     //if(FileExists(tparams->tstackmValues, thermoDataDir)) {
+	     //     initTstkmValues(tparams->tstackmValues, thermoDataDir);
+	     //}
+	     //if(FileExists(tparams->tstackeValues, thermoDataDir)) {
+	     //     initTstkeValues(tparams->tstackeValues, thermoDataDir);
+	     //}
      }
      return GTFPYTHON_ERRNO_OK;
 }
@@ -221,17 +241,18 @@ int SetThermodynamicMode(const char *presetConfigName) {
           ACTIVE_THERMO_PARAMS = &(STATIC_THERMO_PARAMS_CONFIG[0]);
 	  return GTFPYTHON_ERRNO_OK;
      }
-     for(int tpIdx = 0; tpIdx < GetArrayLength(STATIC_THERMO_PARAMS_CONFIG); tpIdx++) {
+     for(int tpIdx = 1; tpIdx < GetArrayLength(STATIC_THERMO_PARAMS_CONFIG); tpIdx++) {
           if(!strcasecmp(STATIC_THERMO_PARAMS_CONFIG[tpIdx].configName, presetConfigName)) {
                if(ACTIVE_THERMO_PARAMS->configSettingParam != NULL) {
 	            *(ACTIVE_THERMO_PARAMS->configSettingParam) = 0;
-	       }
-	       ACTIVE_THERMO_PARAMS = &(STATIC_THERMO_PARAMS_CONFIG[tpIdx]);
+	          }
+	          ACTIVE_THERMO_PARAMS = &(STATIC_THERMO_PARAMS_CONFIG[tpIdx]);
                if(ACTIVE_THERMO_PARAMS->configSettingParam != NULL) {
                     *(ACTIVE_THERMO_PARAMS->configSettingParam) = 1;
-	       }
-	       return GTFPYTHON_ERRNO_OK;
-	  }
+	          }
+               fprintf(stderr, "UNAMODE=%d ;; RNAMODE=%d\n", UNAMODE, RNAMODE);
+	          return GTFPYTHON_ERRNO_OK;
+	     }
      }
      SetLastErrorCode(GTFPYTHON_ERRNO_NAMENOTFOUND, NULL);
      return GetLastErrorCode();

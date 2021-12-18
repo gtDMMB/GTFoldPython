@@ -26,14 +26,10 @@
 
 #ifdef PYTHON2
      #include <python2.7/Python.h>
+     #define PY2K
 #else
      #include <Python.h>
-#endif
-
-#if PY_MAJOR_VERSION >= 3
      #define PY3K
-#else
-     #define PY2K
 #endif
 
 #ifndef _GNU_SOURCE
@@ -54,14 +50,21 @@
      #define O_PATH		010000000
 #endif
 
+#undef NULL
+#if defined(__cplusplus)
+     #define NULL 0
+#else
+     #define NULL ((void *)0)
+#endif
+
 #include <stdbool.h>
 #ifndef true
      #define true 1
      #define false (!true)
 #endif
 
-#define MAX_BUFFER_SIZE                    (8096)
-#define STR_BUFFER_SIZE                    (768)
+#define MAX_BUFFER_SIZE                    (4096)
+#define STR_BUFFER_SIZE                    (1024)
 
 #define IFACELIB_MINOR_VERSION             (0)
 #define IFACELIB_MAJOR_VERSION             (1)
@@ -85,21 +88,21 @@ extern int      WRITEAUXFILES;
 extern int      EXACTINTLOOP;
 extern char     outputDir_cstr[STR_BUFFER_SIZE];
 
-#define SetLastErrorCode(ecode, emsg)                                                                   \
-	do {                                                                                            \
-		snprintf(ErrorCodeErrnoMsg, 6 * STR_BUFFER_SIZE, "On line %d of C-source %s in %s: %s", \
-			 __LINE__, __FILE__, __FUNCTION__,                                              \
-			 emsg == NULL ? "Error occurred." : emsg);                                      \
-		SetLastErrorCodeLocal(ecode, ErrorCodeErrnoMsg);                                        \
+#define SetLastErrorCode(ecode, emsg)                                                              \
+	do {                                                                                          \
+		snprintf(&ErrorCodeErrnoMsg[0], STR_BUFFER_SIZE, "On line %d of C-source %s in %s: %s",  \
+			 __LINE__, __FILE__, __func__,                                                      \
+			 emsg == NULL ? "Error occurred." : emsg);                                          \
+		SetLastErrorCodeLocal(ecode, ErrorCodeErrnoMsg);                                         \
 	} while(0)
 
-#define SetCSourceNotImplementedError(msg)                                                              \
-	do {                                                                                            \
-		snprintf(ErrorCodeErrnoMsg, 6 * STR_BUFFER_SIZE, "On line %d of C-source %s in %s: %s", \
-			 __LINE__, __FILE__, __FUNCTION__, msg != NULL ? msg : "Not implemented!");     \
-		PyGILState_STATE pgState = PyGILState_Ensure();                                         \
-		PyErr_SetString(PyExc_NotImplementedError, ErrorCodeErrnoMsg);                          \
-		PyGILState_Release(pgState);                                                            \
+#define SetCSourceNotImplementedError(msg)                                                         \
+	do {                                                                                          \
+		snprintf(&ErrorCodeErrnoMsg[0], STR_BUFFER_SIZE, "On line %d of C-source %s in %s: %s",  \
+			 __LINE__, __FILE__, __func__, msg != NULL ? msg : "Not implemented!");             \
+		PyGILState_STATE pgState = PyGILState_Ensure();                                          \
+		PyErr_SetString(PyExc_NotImplementedError, ErrorCodeErrnoMsg);                           \
+		PyGILState_Release(pgState);                                                             \
 	} while(0)
 
 #endif

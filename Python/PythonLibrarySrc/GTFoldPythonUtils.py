@@ -96,16 +96,17 @@ class GTFoldPythonUtils(object):
                 lineText = lineText.rstrip()
                 if len(lineText) == 0:
                     continue
-                consParams = lineText.split()
+                consParams = lineText.split(' ')
                 if len(consParams) not in [3, 4] or consParams[0] not in ["F", "P"]:
                     raise SyntaxError("Invalid constraint syntax on line #{0}: \"{1}\" ... ".format(lineNo, lineText))
-                curCons = [ GTFoldPython.F if consParams[0] == "F" else GTFoldPython.P ]
+                curCons = GTFoldPython.F if consParams[0] == "F" else GTFoldPython.P
                 (i, j, k) = consParams[1:] if len(consParams) == 4 else (consParams[1], 0, consParams[2])
                 (i, j, k) = (int(i), int(j), int(k))
+                #print([curCons, i, j, k])
                 #if k <= 0 or abs(j - i) < 4:
                 #    raise SyntaxError("Invalid constraint values on line #{0}: \"{1}\" ... ".format(lineNo, lineText))
-                curCons.extend([i, j, k])
-                consList.append(curCons)
+                #curCons.extend([i, j, k])
+                consList.append([ curCons, i, j, k ])
             ##
         #except Exception:
         #    consFP.close()
@@ -146,7 +147,7 @@ class GTFoldPythonUtils(object):
                 lineText = lineText.rstrip()
                 if len(lineText) == 0:
                     continue
-                consParams = lineText.split()
+                consParams = lineText.split(' ')
                 if len(consParams) != 2:
                     raise SyntaxError("Invalid SHAPE constraint on line #{0} in \"{1}\" ... ".format(lineNo, fileNamePath))
                 curCons = [ typeFunc(param) for (param, typeFunc) in \

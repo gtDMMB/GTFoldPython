@@ -7,18 +7,21 @@
 #define __ERROR_HANDLING_H__
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "PythonConfig.h"
+#include "Utils.h"
 
 typedef struct {
      int errorCode;
-     const char *errorMsg;
+     char errorMsg[STR_BUFFER_SIZE];
 } ErrorCode_t;
 
 #define GTFPYTHON_ERRNO_OK                     (0)
@@ -44,9 +47,11 @@ typedef struct {
 #define GTFPYTHON_ERRNO_FNOEXIST               (20)
 #define GTFPYTHON_ERRNO_INVTHERMOPARAMS        (21)
 #define GTFPYTHON_ERRNO_NAMENOTFOUND           (22)
+#define GTFPYTHON_ERRNO_KBDINTERRUPT           (23)
+#define GTFPYTHON_ERRNO_MEMORY_SIGSEGV         (24)
 
 extern const ErrorCode_t GTFPYTHON_ERROR_CODES[]; 
-extern char ErrorCodeErrnoMsg[6 * STR_BUFFER_SIZE];
+extern char ErrorCodeErrnoMsg[STR_BUFFER_SIZE];
 extern ErrorCode_t ErrorCodeErrno;
 
 const ErrorCode_t GetErrorCode(int ecode);
@@ -54,6 +59,41 @@ int SetLastErrorCodeLocal(int ecode, const char *customErrorMsg);
 int GetLastErrorCode(void);
 const char * ErrorCodeStrerror(int ecode);
 void ErrorCodePerror(const char *errorMsgPrefix);
+void * RaiseErrorException(void);
+
+static inline const char * GetPlatformSignalNameString(int signum) {
+     #if defined(__APPLE__) || defined(__APPLE_CC__) || defined(__OSX__)
+          return sys_signame[signum];
+     #else
+	  return strsignal(signum);
+     #endif
+}
+
+/* Handle <CTRL+C> keypresses (SIGINT signals) gracefully -- even while 
+ * running computationally intensive code snippets between the Python 
+ * bindings glue:
+ */
+extern char __SignalNameBuffer[STR_BUFFER_SIZE];
+#define GetSignalNameString(signum)            ({                                           \
+     char *localSigTypeStr = NULL;                                                          \
+     __SignalNameBuffer[0] = '\0';                                                          \
+     do {                                                                                   \
+          localSigTypeStr = strdup(GetPlatformSignalNameString(signum));                    \
+          if(localSigTypeStr) {                                                             \
+               StringToUpper(localSigTypeStr);                                              \
+               snprintf(&__SignalNameBuffer[0], STR_BUFFER_SIZE, "SIG%s", localSigTypeStr); \
+               __SignalNameBuffer[STR_BUFFER_SIZE - 1] = '\0';                              \
+               free(localSigTypeStr);                                                       \
+          }                                                                                 \
+     } while(0);                                                                            \
+     __SignalNameBuffer;                                                                    \
+     })
+
+void keyboard_interrupt_handler(int signum, siginfo_t *siginfo, void *ctx);
+void keyboard_interrupt_register(void);
+void segfault_interrupt_handler(int signum, siginfo_t *siginfo, void *ctx);
+void segfault_interrupt_register(void);
+void all_interrupt_register(void);
 
 #ifdef __cplusplus
 }

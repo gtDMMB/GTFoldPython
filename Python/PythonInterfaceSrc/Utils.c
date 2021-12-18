@@ -11,11 +11,12 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <ctype.h>
 
 #include "Utils.h"
 #include "ErrorHandling.h"
 
-void Free(void *memPtr) {
+void FreeMemory(void *memPtr) {
      if(memPtr != NULL) {
           free(memPtr);
      }
@@ -32,6 +33,16 @@ char * CopyString(const char *origStr, int *chCount) {
           *chCount = strlen(origStr);
      }
      return strdup(origStr);
+}
+
+void StringToUpper(char *lcStr) {
+     if(lcStr == NULL) {
+          return;
+     }
+     while(*lcStr) {
+          *lcStr = toupper(*lcStr);
+          lcStr++;
+     }
 }
 
 bool IsDirectory(const char *dirPath) {
@@ -142,6 +153,10 @@ bool SetFileOutPath(char *pathVar, const char *pfxDir, const char *namePfx,
 }
 
 PyObject * ReturnPythonNone(void) {
+     if(GetLastErrorCode() != GTFPYTHON_ERRNO_OK) {
+          //RaiseErrorException();
+          return NULL; // raises a RuntimeError exception
+     }
      PyGILState_STATE pgState = PyGILState_Ensure();
      Py_INCREF(Py_None);
      PyGILState_Release(pgState);
@@ -154,7 +169,7 @@ PyObject * ReturnPythonInt(int ival) {
      PyGILState_Release(pgState);
      if(pyInt == NULL) {
           SetLastErrorCode(GTFPYTHON_ERRNO_NOMEM, NULL);
-	  return ReturnPythonNone();
+	     return ReturnPythonNone();
      }
      pgState = PyGILState_Ensure();
      Py_INCREF(pyInt);

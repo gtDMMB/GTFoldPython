@@ -3,6 +3,8 @@
 # Author: Maxie D. Schmidt (maxieds@gmail.com)
 # Created: 2020.01.23
 
+from _ctypes import dlopen as __dlopen
+from _ctypes import dlclose as __dlclose
 import ctypes
 from ctypes import POINTER, pointer
 import os
@@ -16,11 +18,24 @@ class GTFoldPython:
     """
 
     # Static definitions and initialization:
-    F = int(0x46)
-    P = int(0x50)
+    F = int(0x01010101)
+    P = int(0x00000000)
 
     _libGTFoldIsInit = False
     _libGTFoldHandle = None
+
+    _configQuiet = 0
+    _configVerbose = 0
+    _configDebugging = 0
+    _configStdMsgOut = "stderr"
+    _configExtraSettingsDict = dict([])
+    _configDataDir = ""
+    _configEnergyModelName = GTFPConfig.THERMO_PARAMS_SPEC_TURNER04
+    _configEnergyModelDataDir = None
+    _configDangle = 0
+    _configTerminalMismatch = False
+    _configLimitContactDistance = 0
+    _configPrefilter = 0
 
     # Static helper methods:
     @staticmethod
@@ -38,27 +53,116 @@ class GTFoldPython:
     def _ConstructLibGTFold(reinit = False):
         """Run this before calling any LibGTFold methods"""
         if not GTFoldPython._libGTFoldIsInit or reinit:
-            if GTFPConfig.PLATFORM_DARWIN:
-                GTFoldPython._libGTFoldHandle = ctypes.cdll.LoadLibrary("GTFoldPython.dylib")
-            else:
-                GTFoldPython._libGTFoldHandle = ctypes.PyDLL(
-                        "GTFoldPython.so", 
-                        mode = ctypes.RTLD_GLOBAL, 
-                        use_errno = True
-                )
+            #if reinit: GTFoldPython._CloseCTypesLibrary()
+            if GTFoldPython._libGTFoldHandle == None or reinit:
+                if GTFPConfig.PLATFORM_DARWIN:
+                    GTFoldPython._libGTFoldHandle = ctypes.cdll.LoadLibrary("GTFoldPython.dylib")
+                else:
+                    GTFoldPython._libGTFoldHandle = ctypes.PyDLL(
+                            "GTFoldPython.so", 
+                            mode = ctypes.RTLD_GLOBAL, 
+                            use_errno = True
+                    )
             GTFoldPython._libGTFoldHandle.GTFoldPythonInit()
             GTFoldPython._libGTFoldIsInit = True
+            if reinit:
+                #GTFoldPython.Config(
+                #        quiet=GTFoldPython._configQuiet,
+                #        verbose=GTFoldPython._configVerbose,
+                #        debugging=GTFoldPython._configDebugging,
+                #        stdmsgout=GTFoldPython._configStdMsgOut
+                #)
+                if GTFoldPython._configDataDir != '':
+                    GTFoldPython.SetGTFoldDataDirectory(GTFoldPython._configDataDir)
+                if GTFoldPython._configEnergyModelName != None:
+                    GTFoldPython.SetThermodynamicParameters(
+                            GTFoldPython._configEnergyModelName, 
+                            GTFoldPython._configEnergyModelDataDir
+                    )
+                if GTFoldPython._configDangle != None:
+                    GTFoldPython.SetDangleParameter(GTFoldPython._configDangle)
+                if GTFoldPython._configTerminalMismatch != None:
+                    GTFoldPython.SetTerminalMismatch(GTFoldPython._configTerminalMismatch)
+                if GTFoldPython._configLimitContactDistance != None:
+                    GTFoldPython.SetLimitContactDistance(GTFoldPython._configLimitContactDistance)
+                if GTFoldPython._configPrefilter != None:
+                    GTFoldPython.SetPrefilterParameter(GTFoldPython._configPrefilter)
+                GTFoldPython.ConfigExtraSettings(GTFoldPython._configExtraSettingsDict)
         ##
+    ##
+
+    @staticmethod
+    def _CloseCTypesLibrary():
+        if False and GTFoldPython._libGTFoldHandle != None:
+            OS_PLATFORM = platform.system()
+            dlCloseFunc = __dlclose
+            try:
+                if OS_PLATFORM == "Windows":
+                    dlCloseFunc = ctypes.windll.kernel32.FreeLibrary
+                elif OS_PLATFORM == "Darwin":
+                    try:
+                        try:
+                            # MacOS 11 -- Big Sur: 
+                            stdlib = ctypes.CDLL("libc.dylib")
+                        except OSError:
+                            stdlib = ctypes.CDLL("libSystem")
+                    except OSError:
+                        try:
+                            stdlib = ctypes.CDLL("/usr/lib/system/libsystem_c.dylib")
+                        except OSError:
+                            stdlib = ctypes.CDLL(None)
+                            #GTFoldPython._libGTFoldHandle
+                    dlCloseFunc = stdlib.dlclose
+                elif OS_PLATFORM == "Linux":
+                    try:
+                        stdlib = ctypes.CDLL("")
+                    except OSError:
+                        stdlib = ctypes.CDLL("libc.so")
+                    dlCloseFunc = stdlib.dlclose
+                elif OS_PLATFORM == "msys":
+                    stdlib = ctypes.CDLL("msys-2.0.dll")
+                    dlCloseFunc = stdlib.dlclose
+                elif OS_PLATFORM == "cygwin":
+                    stdlib = ctypes.CDLL("cygwin1.dll")
+                    dlCloseFunc = stdlib.dlclose
+                elif OS_PLATFORM == "FreeBSD":
+                    stdlib = ctypes.CDLL("libc.so.7")
+                    dlCloseFunc = stdlib.dlclose
+            except OSError:
+                dlCloseFunc = __dlclose
+            dlCloseFunc.argtypes = [ ctypes.c_void_p ]
+            dlCloseFunc.restype = ctypes.c_int
+            dlCloseFunc(GTFoldPython._libGTFoldHandle._handle)
+            del GTFoldPython._libGTFoldPython
+            GTFoldPython._libGTFoldHandle = None
+            GTFoldPython._libGTFoldIsInit = False
     ##
 
     # The actual interface for users:
     @staticmethod
     def Init(reinitLibrary = False):
         """Initialize the LibGTFold instance (C source variables init)"""
+        if reinitLibrary:
+            pass
+            #GTFoldPython._configExtraSettingsDict = {}
+            #GTFoldPython._configQuiet = 0
+            #GTFoldPython._configVerbose = 0
+            #GTFoldPython._configDebugging = 0
+            #GTFoldPython._configStdMsgOut = "stderr"
+            #GTFoldPython._configDataDir = ""
+            #GTFoldPython._configEnergyModelName = GTFPConfig.THERMO_PARAMS_SPEC_TURNER04
+            #GTFoldPython._configEnergyModelDataDir = None
+            #GTFoldPython._configDangle = 0
+            #GTFoldPython._configTerminalMismatch = False
+            #GTFoldPython._configLimitContactDistance = 0
+            #GTFoldPython._configPrefilter = 0
         GTFoldPython._ConstructLibGTFold(reinitLibrary)
-        #libGTFoldInitFunc = GTFoldPython._WrapCTypesFunction("GTFoldPythonInit")
-        #libGTFoldInitFunc()
-        GTFoldPython.Config()
+        GTFoldPython.Config(
+                quiet=GTFoldPython._configQuiet,
+                verbose=GTFoldPython._configVerbose,
+                debugging=GTFoldPython._configDebugging,
+                stdmsgout=GTFoldPython._configStdMsgOut
+        )   
     ##
 
     @staticmethod
@@ -69,12 +173,15 @@ class GTFoldPython:
            - debugging 0/1               : turn on/off printing of extra verbose debugging messages
            - stdmsgout "stderr"|"stdout" : sets default out stream to print messages
         """
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._configQuiet = quiet
+        GTFoldPython._configVerbose = verbose
+        GTFoldPython._configDebugging = debugging
+        GTFoldPython._configStdMsgOut = stdmsgout
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ctypes.c_int, ctypes.c_int,
                     ctypes.c_int, GTFPTypes.CStringType ]
-        libGTFoldFunc = GTFoldPython._WrapCTypesFunction(
-            "GTFoldPythonConfig", resType, argTypes)
+        libGTFoldFunc = GTFoldPython._WrapCTypesFunction("GTFoldPythonConfig", resType, argTypes)
         return libGTFoldFunc(ctypes.c_int(quiet),
                              ctypes.c_int(verbose),
                              ctypes.c_int(debugging),
@@ -127,17 +234,20 @@ class GTFoldPython:
         };
         >>> GTFP.ConfigSettings(**cfgSettings)
         """
-        GTFoldPython._ConstructLibGTFold()
+        curConfigDict = GTFoldPython._configExtraSettingsDict
+        curConfigDict.update(kwargs)
+        GTFoldPython._configExtraSettingsDict = curConfigDict
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ ctypes.py_object ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("GTFoldPythonConfigSettings", resType, argTypes)
-        return libGTFoldFunc(kwargs)
+        return libGTFoldFunc(GTFoldPython._configExtraSettingsDict)
     ##
 
     @staticmethod
     def PrintRunConfiguration(printVerboseParams = True):
         """Print the GTFold settings AND local developer-only settings configuration status"""
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("PrintGTFoldRunConfiguration", resType, argTypes)
@@ -151,8 +261,10 @@ class GTFoldPython:
            See options: -p, --paramdir DIR
            Also can be set by exporting the env variable GTFOLDDATADIR at runtime
         """
-        GTFoldPython._ConstructLibGTFold()
-        absDataPath = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), relDirPath)) 
+        GTFoldPython._configDataDir = relDirPath
+        GTFoldPython._ConstructLibGTFold(False)
+        #absDataPath = os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), relDirPath)) 
+        absDataPath = relDirPath
         resType = ctypes.py_object
         argTypes = [ GTFPTypes.CStringType, ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SetGTFoldDataDirectory", resType, argTypes)
@@ -172,9 +284,11 @@ class GTFoldPython:
            >>> from GTFoldPythonImportAll import *
            >>> DisplayHelp("SetThermodynamicParameters")
         """
-        GTFoldPython._ConstructLibGTFold()
-        absDataDirPath = None if baseDataDir == None else \
-                os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), baseDataDir))
+        if baseDataDir == None or baseDataDir == '':
+            return GTFoldPython.SetThermodynamicParametersFromDefaults(energyModelName)
+        GTFoldPython._configEnergyModelName = energyModelName
+        GTFoldPython._configEnergyModelBaseDataDir = baseDataDir
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ GTFPTypes.CStringType, GTFPTypes.CStringType ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SetThermodynamicParameters", resType, argTypes)
@@ -189,7 +303,7 @@ class GTFoldPython:
            names for the locations of the data set files.
            ::seealso GTFoldPython.SetThermodynamicParameters
         """
-        defaultDataDir = GTFPConfig.GetThermodynamicParametersDirectory(energyModelName)
+        defaultDataDir = GTFPConfig.GetThermodynamicParametersDirectory(energyModelName, resetDir=True)
         return GTFoldPython.SetThermodynamicParameters(energyModelName, defaultDataDir)
     ##
 
@@ -209,7 +323,8 @@ class GTFoldPython:
 
            See options: -d, --dangle INT
         """
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._configDangle = dangle
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SetDangleParameter", resType, argTypes)
@@ -221,7 +336,10 @@ class GTFoldPython:
         """Enable terminal mismatch calculations.
            See the options -m, --mismatch in the GTFold docs
         """
-        GTFoldPython._ConstructLibGTFold()
+        if type(enable) == bool:
+            enable = 1 if enable else 0
+        GTFoldPython._configTerminalMismatch = enable
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SetTerminalMismatch", resType, argTypes)
@@ -244,7 +362,8 @@ class GTFoldPython:
            base pairs can be over any distance.
            See options: -l, --limitcd INT
         """
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._configLimitContactDist = lcDist
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SetLimitContactDistance", resType, argTypes)
@@ -257,7 +376,8 @@ class GTFoldPython:
            nucleotides such that it could be part of a helix of length INT.
            See options: --prefilter INT
         """
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._configPrefilter = prefilter
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SetPrefilterParameter", resType, argTypes)
@@ -385,7 +505,7 @@ class GTFoldPython:
                      ctypes.c_int, ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SampleBoltzmannStructures", resType, argTypes)
         structTupleLst = libGTFoldFunc(GTFPTypes.CString(baseSeq), GTFPTypes.FPConstraintsList(consList), 
-                                       len(consList), ctypes.c_int(N))
+                                       ctypes.c_int(len(consList)), ctypes.c_int(N))
         structTupleLst = [ (float(ep), float(ap), float(e), str(struct)) for \
                                 (ep, ap, e, struct) in structTupleLst ]
         return structTupleLst
@@ -403,7 +523,7 @@ class GTFoldPython:
                      ctypes.c_int, ctypes.c_int ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("SampleBoltzmannStructuresSHAPE", resType, argTypes)
         structTupleLst = libGTFoldFunc(GTFPTypes.CString(baseSeq), GTFPTypes.SHAPEConstraintsList(consList), 
-                                       len(consList), ctypes.c_int(N))
+                                       c_types.c_int(len(consList)), ctypes.c_int(N))
         structTupleLst = [ (float(ep), float(ap), float(e), str(struct)) for \
                                 (ep, ap, e, struct) in structTupleLst ]
         return structTupleLst
@@ -414,7 +534,7 @@ class GTFoldPython:
         """Display detailed help message. Includes examples and additional options useful to developers.
         ::seealso:: DisplayHelp
         """
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = []
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("DisplayDetailedHelp", resType, argTypes)
@@ -427,7 +547,7 @@ class GTFoldPython:
            Includes examples and additional options useful to developers.
         ::seealso:: DisplayDetailedHelp
         """
-        GTFoldPython._ConstructLibGTFold()
+        GTFoldPython._ConstructLibGTFold(False)
         resType = ctypes.py_object
         argTypes = [ GTFPTypes.CStringType ]
         libGTFoldFunc = GTFoldPython._WrapCTypesFunction("DisplayHelp", resType, argTypes)

@@ -7,8 +7,8 @@ from ctypes import POINTER
 import ctypes
 
 class FPConstraintStruct(ctypes.Structure):
-    _fields_ = (('consType', ctypes.c_short),
-                ('i', ctypes.c_short), ('j', ctypes.c_short), ('k', ctypes.c_short),)
+    _fields_ = (('consType', ctypes.c_int),
+                ('i', ctypes.c_int), ('j', ctypes.c_int), ('k', ctypes.c_int),)
 ##
 
 class SHAPEConstraintStruct(ctypes.Structure):
@@ -21,7 +21,7 @@ class GTFoldPythonCTypes(object):
     IntType = ctypes.c_int
     UIntType = ctypes.c_uint
     CStringType = POINTER(ctypes.c_char)
-    FPConstraintType = ctypes.c_short * 4
+    FPConstraintType = ctypes.c_int * 4
     FPConstraintStructType = FPConstraintStruct
     SHAPEConstraintType = SHAPEConstraintStruct
 
@@ -69,6 +69,8 @@ class GTFoldPythonCTypes(object):
     @staticmethod
     def CString(x):
         if GTFoldPythonCTypes.IsStringType(x):
+            #if len(x) == 0:
+            #    x = '\0'
             return ctypes.byref(ctypes.c_char.from_buffer(bytearray(x, encoding = 'utf-8')))
         elif x == None:
             return None     # Same as passing NULL string

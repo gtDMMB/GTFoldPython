@@ -66,14 +66,14 @@ typedef enum {
 static inline const char * CPrimitiveTypeToString(CTypePrimitive_t ctypeSpec) {
      switch(ctypeSpec) {
           case VOID:   return "VOID";
-	  case BOOL:   return "BOOL|INT";
-	  case INT:    return "INT";
-	  case UINT:   return "UINT|INT";
-	  case SHORT:  return "SHORT|INT";
-	  case FLOAT:  return "FLOAT";
-	  case DOUBLE: return "DOUBLE";
-	  case STRING: return "STRING";
-	  default:     return "";
+	     case BOOL:   return "BOOL|INT";
+	     case INT:    return "INT";
+	     case UINT:   return "UINT|INT";
+	     case SHORT:  return "SHORT|INT";
+	     case FLOAT:  return "FLOAT";
+	     case DOUBLE: return "DOUBLE";
+	     case STRING: return "STRING";
+	     default:     return "";
      }
      return "";
 }
@@ -84,7 +84,8 @@ typedef struct {
      const char       *gtfoldOptions;
      const char       *help;
      int              *boolTruthVar;
-     void             *dataRef[4]; // the size 4 is chosen as an upper bound, change it if necessary
+     void             *dataRef[6];          // the size 5 is chosen as an upper bound, change it if necessary
+     void             **dataPtrRef;
 } GTFoldKeywordSpec_t;
 
 #define PRINT_HELP_BULLET_ANSIFMT           (DARK_GRAY | BOLD)
@@ -94,18 +95,18 @@ typedef struct {
 #define PRINT_HELP_DOCSTR_ANSIFMT           (LIGHT_BLUE | ITALIC)
 #define PRINT_HELP_ERRORSTR_ANSIFMT         (FGRED | ITALIC)
 
-#define PrintHelpListItem(bullet, itemHdr, itemTxt) \
+#define PrintHelpListItem(bullet, itemHdr, itemTxt)                       \
 	PrintBulletItem(CONFIG_STDMSGOUT, bullet, PRINT_HELP_BULLET_ANSIFMT, \
-			itemHdr, PRINT_HELP_ITEMHDR_ANSIFMT, \
-			itemTxt, PRINT_HELP_ITEMVAL_ANSIFMT, true)
+			      itemHdr, PRINT_HELP_ITEMHDR_ANSIFMT,                 \
+			      itemTxt, PRINT_HELP_ITEMVAL_ANSIFMT, true)
 
 PyObject * __EXPORT__ DisplayDetailedHelp(void);
 PyObject * __HIDDEN__ DisplayDetailedHelpSettings(void);
 PyObject * __EXPORT__ DisplayHelp(const char *methodName);
 
 #ifdef PY3K
-PyMODINIT_FUNC PyInit_GTFoldPython(void);
-extern struct PyModuleDef GTFoldPythonModule;
+     PyMODINIT_FUNC PyInit_GTFoldPython(void);
+     extern struct PyModuleDef GTFoldPythonModule;
 #endif
 
 /* Define a "dummy" method that calls all of our interface functions to 
