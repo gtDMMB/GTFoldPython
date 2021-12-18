@@ -1,0 +1,25 @@
+Internal loop free energies:
+
+initiation
+4	1.1
+5	2.0
+6	2.0
+
+Asymmetry
+0.6
+
+AU/GU closure:
+0.7
+
+2x3 terminal mismatch:
+YR/AG -0.5
+RY/GA -1.2
+YR/GA -1.1
+GG -0.8
+UU -0.4
+
+Other terminal mismatch:
+AG -0.8
+GA -1.0
+GG -1.2
+UU -0.7

@@ -1,0 +1,25 @@
+Internal loop enthalpies:
+
+initiation
+4	-7.2
+5	-6.8
+6	-1.3
+
+Asymmetry
+3.2
+
+AU/GU closure:
+5.0
+
+2x3 terminal mismatch:
+YR/AG -5.7
+RY/GA -10.9
+YR/GA -8.6
+GG -9.0
+UU -6.4
+
+Other terminal mismatch:
+AG -3.4
+GA -7.6
+GG +2.8
+UU -5.8

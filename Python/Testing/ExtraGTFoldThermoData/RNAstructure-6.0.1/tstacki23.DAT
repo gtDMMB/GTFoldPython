@@ -1,0 +1,16 @@
+ inf    inf    inf     inf   inf    inf    inf     inf   inf    inf    inf     inf   0.7  0.7  0.7  0.7
+ inf    inf     inf   inf    inf    inf     inf   inf    inf    inf     inf   inf    0.7  0.7  0.7  0.7
+ inf     inf   inf     inf   inf     inf   inf     inf   inf     inf   inf     inf  -0.4  0.7 0.0  0.7
+  inf   inf     inf   inf     inf   inf     inf   inf     inf   inf     inf   inf    0.7  0.7  0.7  0.4
+ inf    inf    inf     inf   inf    inf    inf     inf   0.0  0.0 -0.5  0.0  inf    inf    inf     inf 
+ inf    inf     inf   inf    inf    inf     inf   inf    0.0  0.0  0.0  0.0  inf    inf     inf    inf
+ inf     inf   inf     inf   inf     inf   inf     inf  -1.1  0.0 -0.7  0.0  inf     inf   inf     inf 
+  inf   inf     inf   inf     inf   inf     inf   inf    0.0  0.0  0.0 -0.3   inf   inf     inf    inf
+ inf    inf    inf     inf   0.0  0.0  0.0  0.0  inf    inf    inf     inf   0.7  0.7  0.7  0.7
+ inf    inf     inf   inf    0.0  0.0  0.0  0.0  inf    inf     inf   inf    0.7  0.7  0.7  0.7
+ inf     inf   inf     inf  -1.2  0.0 -0.7  0.0  inf     inf   inf     inf  -0.4  0.7 0.0  0.7
+  inf   inf     inf   inf    0.0  0.0  0.0 -0.3   inf   inf     inf   inf    0.7  0.7  0.7  0.4
+ 0.7  0.7  0.2  0.7   inf    inf    inf     inf   0.7  0.7  0.2  0.7   inf    inf    inf     inf 
+ 0.7  0.7  0.7  0.7   inf    inf     inf   inf    0.7  0.7  0.7  0.7   inf    inf     inf    inf
+-0.4  0.7 0.0  0.7   inf     inf   inf     inf  -0.4  0.7 0.0  0.7   inf     inf   inf     inf 
+ 0.7  0.7  0.7  0.4   inf   inf     inf   inf     0.7  0.7  0.7  0.4   inf   inf     inf   inf

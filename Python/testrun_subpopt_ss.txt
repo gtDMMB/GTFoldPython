@@ -1,0 +1,2 @@
+count	GCCGUGAUAGUUUAA	  0.00
+1	...............	  0.00

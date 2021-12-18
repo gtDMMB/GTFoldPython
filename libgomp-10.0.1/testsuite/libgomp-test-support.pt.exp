@@ -1,0 +1,8 @@
+set GCC_UNDER_TEST {gcc}
+
+set cuda_driver_include ""
+set cuda_driver_lib ""
+set hsa_runtime_lib ""
+
+set offload_plugins ""
+set offload_targets ""

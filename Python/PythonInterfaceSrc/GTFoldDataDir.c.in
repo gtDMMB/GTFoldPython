@@ -1,0 +1,5 @@
+#ifndef __GTFOLD_DATADIR_CONFIG_C__
+#define __GTFOLD_DATADIR_CONFIG_C__
+     static const char *DEFAULT_GTFOLD_DATADIR = "##__GTFOLD_DATADIR__##";
+     extern char GTFOLD_DATADIR[STR_BUFFER_SIZE];
+#endif

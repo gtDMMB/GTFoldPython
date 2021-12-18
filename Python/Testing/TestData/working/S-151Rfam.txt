@@ -1,0 +1,604 @@
+> RF00001_A
+UUCGGUGGUUAUAGCGGUGGGGAAACACCCGGUCCCAUUCCGAACCCGGUAGUUAAGCCCGCCAGCGCCGAUGGUACUGCACUGGUGACGGUGUGGGAGAGUAGGUCGCCGCCGGAC
+(((((((((....((.(((((...((..((((((.......))..))))..))....)))))..))(((.((..(.((.....(....)......)).).)).))).))))))))).
+
+> RF00002_B
+UAGCUUCAGCGAUGGAUCGGUUGCAUCGAGUAUCGAUGAAGAACGCAGCUUGCUGCGUUACUUACCACGAAUUGCAGACGCUUAGAGUGGUGAAAUUUCGAACGCAUAGCACCAACUGGGCCUCCAGUUGGUACGUCUGGUUCAGGGUUG
+................................((.((......(((((....))))).((((((...((.........))..)).)))))))).................(((((((((....)))))))))..................
+
+> RF00003_B
+AUACUUACCUGGACGGGGUCAAUGGAUGAUCUAUAAGGUCCAUGGCCUAGGGAAGUGACCUUCAUUGCACUCAGAAGGGGUGCUACUCUAAGGUCUGUCCAAGUGAUGGAGCCUACGUCAUAAUUUGUGGUAGUGGGGGCCUGCGUUCGCGCGGCCCCUUA
+...........((((((((((.(((((..........)))))))))))(((......(((.((..........))..)).).....))).((((.(.((.....)).))..))).))))...............(((((.(((((....))))).))))).
+
+> RF00004_A
+AUAUCUUCUCGGCUAUUUAGCUAAGAUCAAGUUAUUAAACUGUUCUUAUCAGAGUAACUCCUGAUACGGGCCUUUGGCCCAAGGAUCAAAACUGUUGCCUGUCCCGCGUUCUUCCGGGGUUCCACUUGUCCGGACGGAGCGCGAC
+......(((.((((....)))).)))....................((((((........)))))).(((((...)))))..........................((((((((((((..........)))))).))))))....
+
+> RF00005_A
+GGGCCCAUAGCUCAGUGGUAGAGUGCCUCCUUUGCAAGGAGGAUGCCCUGGGUUCGAAUCCCAGUGGGUCCA
+(((((((..((((.......)))).(((((.......))))).....(((((.......)))))))))))).
+
+> RF00007_B
+UGCCUUAAACUUAUGAGUAAGGAAAAUAACGAUUCGGGGUGACGCCCGAAUCCUCACUGCUAAUGUGAGACGAAUUUUUGAGCGGGUAAAGGUCGCCCUCAAGGUGACCCGCCUACUUUGCGGGAUGCC
+..(((((..........)))))........((((((((......))))))))(((((.......)))))...........((.((((...(((((((.....))))))).)))).))............
+
+> RF00008_B
+CAAAAGUCUGGGCUAAGCCCACUGAUGAGCCGCUGAAAUGCGGCGAAACUUUUG
+.((((((.(((((...))))).......((((........))))...)))))).
+
+> RF00009_A
+GCGGAAGGAAGCUCACUGUAGAGGCUACUUGCUGGGUGCUGUUGUUACUCUAUCAACCAGCCUUGGGGAAGGUCUGAGAUAAGAGCCACUUGUUGCCUUCACAAGGCAUUGCUUGGUGUAAGCAAGUGAGUUCCCAUCAAAGAUGGCUCAGUUGCAAGCUUAAUGCAAGAGACAUAGCAAAGAAGCCCAAUAUACUUCUGAUAUGGAUGCAAUGCCCAACAGACUGGAAAUGACUCACGGCUGGCAUGUUCAAGCUCAAUGACUGAGGGGAAGCAAGUGAUGGCUUCCUAACCCAAUUCAGACCACUCUCCGGAAUUCCG
+...........((((.....((((.........(((((.......)))))..........))))..................(((((......(((((.....)))))(((((((...)))))))(((((((...................................................................................................)))))))))))..)..................))))(((((((........)))))))...............................
+
+> RF00010_A
+GAGGAAAGUCCGGGCUCCCAAAAGACCAGACUUGCUGGGUAACGCCCAGUGCGGGUGACCGUGAGGAGAGUGCCACAGAAACAUACCGCCGAUGGCCUGCUUGCAGGCACAGGUAAGGGUGCAAGGGUGCGGUAAGAGCGCACCAGCAACAUCGAGAGGUGUUGGCUCGGUAAACCCCGGUUGGGAGCAAGGUGGAGGGACAACGGUUGGUCUUUUACCUGUUCCGUUUAUGGACCGCUAGAGGUGGCUAGUAAUAGCCAUCCCAGAGAGAUAACUGCCCUCUGUCUUCGACAGAGAACAGAACCCGGCUUA
+..............(((((.........(((.(((((((.....)))))(((((....)))).)((...(((((...........(((((..(((((((....))))).)))))..)).......((((((.......))))))(((((((((....))))))).)).)))..))))))))))))))...(((....(((((..(((.........)))))))).........)))......((((((((....)))))))).................(((((((...)))))))................
+
+> RF00011_B
+GUGCAAUUUUUGGAUAAUCGCGUAGUAUUGCAAUACUAUGAGGAAAGUCCAUGCUAGCACCGGCUGUGAUGCUGGUAGUGUUUGUGCUAGGCGAACAAAUAAGCCUAGGGAUGUGUUUGACACAUUACGGCGAGUGAAAAGGCUAAGUCCUUGAUAUGCCAGAGUAGCUCUGAAAGUGCCACAGUGACGAAGUUUUUAUGGAAACGUAAAAAGUGGAACGCGGUAAACCCCUCAAGCUAGCAACCCAAACUUUGGUAGGGGCAUGGGAUAGUUGGAAACGAACAAGCUAUCCUGACUGUUGACAAACAGUAGACAGAUGAUUAUCGAAGGAGAUAAUACCUAGUUAUUUCUGGAACAAAACAUGGCUUAUAGAA
+........(((((((((((.((((((((....)))))))).............(((((((((((......)))))).....(((.(((((((..........))))))(((((((.....)))))).)((.((((.....(((...(((...)))..)))......)))).....(((((............((((((((....)))))))).........)))..))))).))))))))...(((...........)))...(((((((.................)))))))((((((....))))))........)))))))...(((((((((.....)))))))))..................).)))
+
+> RF00012_B
+AAGACUAUACUUUCAGGGAUCAUUUCUAUAGGUUGUACCUGGUGAAAUGUGCUCGAAAGUGUCUGAACUCACAAACCACGAGGAAGAGCGUCAGUGUUUUCUCCUGAGCGUGAAGUGAGCUCACAGUGCUGCUUCAUUGUGGCUGCUGUUUGCUAUUGAUGAACGUUCUGCUCCCCUUUAUUAUUGGGGAGAUAGAGGGAGAGAACACAAGCUGAGUGG
+......((((((((.(((..((((((..((((.....))))..))))))..))))))))))).............((((..............((((((((((((............(((..((((((((((......))))).)))))..)))............(((.((((((.........))))))..))))))))))))))).......))))
+
+> RF00013_A
+AUUUCUCUGAGAUGUUUGCAAGCGGGCCAGUCCCCUGAGCCGAUAUUUCAUACCACAAGAAUGUGGCGCUCCGCGGUUGGUGAGCAUGCUCGGUUCGUCCGAGAAGCCUUAAAACUGUGACGACACAUUCACCUUGAACCAAGGGUUCAAGGGUUACAGCCUGCGGCGGCAUCUCGGAGAUUC
+....((((((((((((.((..((((((....(((.((((((.................(((((.(.((...(((((((..((((....(((((.....)))))....)))).))))))).)).).))))).............)))))).))).....)))))).))))))))))))))....
+
+> RF00014_A
+AACGCAUCGGAUUUCCCGGUGUAACGAAUUUUCAAGUGCUUCUUGCAUUAGCAAGUUUGAUCCCGACUCCUGCGAGUCGGGAUUU
+...(((((((.....)))))))...................(((((....)))))....((((((((((....))))))))))..
+
+> RF00015_B
+AGCUUUGCGCAGUGGCAGUAUCGUAGCCAAUGAGGUCUAUCCGAGGCGCGAUUAUUGCUAAUUGAAAACUUUUCCCAAUACCCCGCCGUGACGACUUGCAAUAUAGUCGGCACUGGCAAUUUUUGACAGUCUCUACGGAGA
+................((.(((((.(((................))))))))..))....((((...........)))).....((((((.(((((........))))).))).)))............((((....))))
+
+> RF00017_B
+GACGGGCUUAGCAACGUGGGCCUGUAACCCAAGUGGGGGCAUGUGGGAAAUGGGACUUUGGGUCAACCUAGUGGAUCGGGUCCAGUGUUAGCUGCUUACUGGUCUGCCCAUUCCAAGCCGGGAGUUGGGCUGAGUGACCUGGGCGAAGGCUGGGUUGCGCAGCUCCUAGAGUGGAGGGCAAUGCGUGAGGCUGGCUUCACAGAGCAGCGACUACCUCCCGCUCUCGGCAGUGGAAGGAUAACGGGCCGGUGCUACCUGGAUCCACCAUGCUUCACUGGGCUGACUCUUAAUAGGACCAUUUCUUU
+(.(.((((..........)))).....(((....)))).)....((((((((...((((.(((((......((((...((((......((.........((((((..((..(((..((((((((..((((((.(((((((.(((....)))))))))).)))))).......(((((......(((..(.(((......)))..).)))....)))))..))))))))...))).)).....))))))....))....))))........))))......)))))...)).))...)))))))).
+
+> RF00019_A
+GGUUGGUCCGCGAGUAGUGGUGUUUACAACUAAUUGAUCACAACCAGUUACAGAUUUCUUUGUUCCUUCUCCACUCCCACUGCU
+.............(((((((........................................................))))))).
+
+> RF00020_A
+AUACUCUGGUUUCUCUUCAGAUCGUAUAAAUCUUUCGCCUUUUACUAAAGAUUUCCGUGGAGAGGAACAACCACGAGUGUCGUGGAAUUUUUUGAGGCUCCGCUUCGGCGGAGCU
+..((((..(((((((((((........((((((((...........))))))))...)))))))))))......))))................(.((((((......)))))))
+
+> RF00021_B
+AUUAGCUCGCGUAGGGUACAGAGGUAAGAUGUUCUAUCUUUCAGACCUUUUGUUUCACGUUAUUGGAUUAGGCUGAUUCAGCCGCCCCAGUCACCAUUUGACUGGGGCGUUUUUUA
+........((((.(((((.((((((((((((...))))))....))))))))))).))))..........((((((.))))))((((((((((.....))))))))))........
+
+> RF00023_B
+GGGGCUGAUUCUGGAUUCGACGGGAUUUGCGAAACCCAAGGUGCAUGCCGAGGGGCGGUUGGCCUCGUAAAAAGCCGCAAAAAAUAGUCGCAAACGACGAAAACUACGCUUUAGCAGCUUAAUAACCUGCUUAGAGCCCUCUCUCCCUAGCCUCCGCUCUUAGGACGGGGAUCAAGAGAGGUCAAACCCAAAAGAGAUCGCGUGGAAGCCCUGCCUGGGGUUGAAGCGUUAAAACUUAAUCAGGCUAGUUUGUUAGUGGCGUGUCCGUCCGCAGCUGGCAAGCGAAUGUAAAGACUGACUAAGCAUGUAGUACCGAGGAUGUAGGAAUUUCGGACGCGGGUUCAACUCCCGCCAGCUCCACCA
+(((((((.............((((((((...(.(.((..(((((((((......((((((............)))))).............................((((((((((.........)))).))))))(((((((((((..(((........)))..))))....))))))).........................((((........)))).........................((((((((((.(((........))).))))))))))...................)))))...))))..)).).)..))))))))...(((((.......))))))))))))....
+
+> RF00024_A
+GGGUUGCGGAGGGUGGGCCUGGGAGGGGUGGUGGCCAUUUUUUGUCUAACCCUAACUGAGAAGGGCGUAGGCGCCGUGCUUUUGCUCCCCGCGCGCUGUUUUUCUCGCUGACUUUCAGCGGGCGGAAAAGCCUCGGCCUGCCGCCUUCCACCGUUCAUUCUAGAGCAAACAAAAAAUGUCAGCUGCUGGCCCGUUCGCCCCUCCCGGGGACCUGCGGCGGGUCGCCUGCCCAGCCCCCGAACCCCGCCUGGAGGCCGCGGUCGGCCCGGGGCUUCUCCGGAGGCACCCACUGCCACCGCGAAGAGUUGGGCUCUGUCAGCCGCGGGUCUCUCGGGGGCGAGGGCGAGGUUCAGGCCUUUCAGGCCGCAGGAAGAGGAACGGAGCGAGUCCCCGCGCGCGGCGCGAUUCCCUGAGCUGUGGGACGUGCACCCAGGACUCGGCUCACACAUGC
+.................((((((((((((((.(((((...........................((((((((.....(((((.......(((.(((((.................))))).)))..)))))....))))).)))..........................................)))))...))))))))))))))..((((((.......((((((((..(((((((..((((.........(((((..(((..........................))).)))))......................))))....)))))))...)))).))))...............))))))..........((((..(((..........(.((...((((........))))...)).)....)))...))))........
+
+> RF00025_A
+AUACCCGCAAAUUCACUCAAAUCUGUAAUAGGUUUGUCAUUCAACCCCAAAAAUCUAGUGCAAAUAUUACUUUCGCCAAUUAGGUAUAAUAAUGGUAAGCGGGACAAGACUCGACAUUUGAUACACUAUUUAUCAAUGGAUGUCUUUUUUCU
+...(((((.........(((.(((.....))).)))......................................((((.(((.......)))))))..)))))..(((((((..(((.(((((.......)))))))))).)))))......
+
+> RF00026_B
+UGCAGUUUGCUGCGCUAUUAGUUUGGAACAACACUGAGAAGAUUAGCAUGGCCCCUGCGCAAGGACGGCAUCUUUCUUUGAGAGGUGUGCUGGGCUCGCCCAGCUUUU
+(((((....)))))..............................................................................................
+
+> RF00028_B
+AUGACUCUCUAAAUUGCAAAAUUUACCUUUGGAGGGAAAAGUUAUCAGGCCUGCACCUGAUAGCUAGUCUUUAAACCAAUAGAUUGCAUCGGUUUAAUAGGCAAGACCGUCAAAUUGCGGGAAAAGGGUCAACAGCCGUUCAGUACCAAGUCUCAGGGGAAACUUUGAGAUGGCCUUGCAAAGGAUAUGGUAAUAAGCUGACGGACAGGGUCCUAACCACGCAGCCAAGUCCUAAGUCAACAUUUCGGUGUUGAUAUGGAUGCAGUUCACAGACUAAAUGUCGGUCGGGGAAGAAUAGGUAUUCUUCUCAUAAGAUAUAGUCGGACCUCUCCUUAAUGGGAGCU
+....(((((((((..............)))))))))...(((....................))).......................................(((((.((...((((((...((((((..............................................................................))))))..)).))))((...((((....(.(...........).)....))))...))............)).))))).(((((((((....)))))))))...................(((((....)))))..
+
+> RF00030_A
+AUCGUCACAAAUCGAAGCUUACAAAAUGGAGUAAAAUUUUUUUUACUCAGUAAUAUGCUUUGGGUUGAAAGUCUCCCACCAAUUCGUAUGCGGAAAACGUAAUGAGAUUUAAAAAUUCUAAAUUGUUUAAAUCAACUCAUUAAGGAGGAUGCCCUUGGGUAUUCUGCUUCUUGACCUGGUACCUCUAUUGCAGGGUACUGGUGUUUUCUUCGGUACUGGAUUCCGUUUGUAUGGAAUCUAAACCAUAGUUAUGACGAUUGCUCUUUCCCGUGCUGGAUCGAGUAACCCAAUGGAGCU
+(((((((....(((((((..........((((((........))))))........)))))))...................((((....)))).....((((((((((((((((((...)))).)))))))...))))))).((((((((((....(((((........((.....((((....))))..)).)))))))))))))))...........((((((....))))))...............)))))))..(((..(((......)))..)))...............
+
+> RF00031_A
+GUGUGCGGAUGAUAACUACUGACGAAAGAGUCAUCGACCUCAGUUAGUGGUUGGAUGUAGUCACAU
+(((((.......(((((((((((......(((...)))....)))))))))))........)))))
+
+> RF00032_B
+AAAACGGUCCUUAUCAGGACCAAACA
+.....((((((....)))))).....
+
+> RF00035_B
+GAAACGGAGCGGCACCUCUUUUAACCCUUGAAGUCACUGCCCGUUUCGAGAGUUUCUCAACUCGAAUAACUAAAGCCAACGUGAACUUUUGCGGAUCUCCAGGAUCCGCU
+(((((((.((((.((.((...........)).))..)))))))))))..((((......))))...........................(((((((.....))))))).
+
+> RF00036_A
+ACCAGGGCAAAGAGAAGAGUGGUGCAGAGAGAAAAAAGAGCAGUAACGCUAGGAGCUAUGUUCCUUGGGUUCUUGGGAGCAGCAGGAAGCACUAUGGGCGCAGCGUCAUUGACGCUGACGGUACAGGCCAGACAAUUAUUGUCUGGUAUAGUGCAACAGCAGAACAAUUUGCUGAGGGCUAUUGAGGCGCAACAGCAUCUGUUGCAACUCACAGUCUGGGGCAUCAAGCAGCUCCAGGCAAGAGUCCUGGCUGUGGAAAGAUACCUAAAGGAUCAACAGCUCCUAGGAAUUUGGGGUUGCUCUGGAAAACUCAUUUGCACCACUACUGUGCCUUGGA
+.((((((((........(((((((.((((((.....((((((((....(((((((((....(((((((((((((....(((((.....((((((((..((((((((.....)))))).))...)).(((((((((...))))))))).))))))..(((((((....)))))))((((((...(((..(((((((...)))))))..)))...(((((((((........)))))))))...)))))).)))))...)))).))))).)))).....))))))))).........))))))))......))).))).)))))))....)))))))).
+
+> RF00037_A
+AUUCUUGCUUCAACAGUGUUUGAACGGAAU
+(((((...(((((......))))).)))))
+
+> RF00040_B
+AAUUCUACGUUGAUUCUCGUUAGACCAAGAGACUUGUGGAAUAAUAAACUUUGCCUGAUCACACAAAAACGCGGCAAUGGCGUAAGACGUAAUGUGAAAUCAAGCAAUUAGCGGGCUGCGGGUUGCAGCUUGGCCGGCAAGUGGGUAAAGCUCUGUUGUCUUAAAUUCAGAAGCUACCCUUUAUAUAAAAGCGCUGUUUUUCAGAACGAAACACAGGCUUACCGAAAUAAUGCGCCCCUAUGCAGGCGACAACCGUGAGGUUGACGGCUUAGCUAGAAGACUCGGGGCCAUCGGUUUAUCCGGUCAUGAGGUUAUUUUGCCCGCAGUUCUAACGCCAA
+.(((((((.....((((..........))))....)))))))........((((.((((..((((...(((..((....))......)))..))))..)))).)))).....(((((((((((.......(((((((.....(((((....((((............))))...))))).........((((.((((.((((.....)))).))))))))(((((........(((((........((.(((((....))))).)).................)))))..)))))....)))))))............))))))))))).........
+
+> RF00045_B
+UCAACAUGGACAUCCGUUGAGGUUACUUGUGGGUCUGUCCAAGUGGUAUAUGGGAGUAUAGCCCUAAGUGCAGUGAUGUACAGUCCCCUUCCACAGUGUUGAAGAGCAAGCCCUGUCCCUGGUUCUAGAGCUGAUGAGGGCAGACUCCUUUAUAUUCCUAUAACUUCUCAGUCUCUAGACAAUUACUGAGGAGAAACCAUGCAGGGUGCAACU
+((((((((((((((((.((((....))))))))..)))))..((((.....(((((((((((..........))..)))))..))))...)))).)))))))............................................(((.(((..........((((((.((((..)))).......)))))).....))).)))........
+
+> RF00048_A
+GAUGAGCAACUACAUACAGUUCAAGUCCAAAUGCCGUAUUGAGCCUGUAUGUUUACUUCUC
+............(((((.((((((...(.......)..))))))..)))))..........
+
+> RF00050_A
+GUACGUCUUCAGGGCGGGGUGGAAUUCCCCACCGGCGGUAUGCGGGCCAUCGGUCUGCGAGCCCGCGAGCGCCCGGCAUGCGCAGCGCAUGCCGGGGUCAGCAGAUCCGGUGAGAUGCCGGGGCCGACGGUCAGAGUCCGGAUGGAAGAAGAUGUGC
+((((((((((......(((.......))).......((.......................))..........................................(((((.......))))).....(((.......))).......))))))))))
+
+> RF00059_B
+GCGUUCUUGUCGGGGUGCCUUGCUAUGAGGCUGAGAUCGGUUAAACCGGAUCCCGUUGAACCUGAUCAGGUUAGCGCCUGCGUAGGGAACAAGAUUUCUCGUCUC
+.....(((((((((..((((((...)))))).....((((((.))))))..)))).....((((..(((((....)))))..))))..)))))............
+
+> RF00061_B
+CAGAAAGCGUCUAGCCAUGGCGCUAGUAUGAGUGUCGUGCAGCCUCCAGGACCCCCCCUCCCGGGAGAGCCAUAGUGGUCUGCGGAACCGGUGAGUACACCGGAAUUGCCAGGACGACCGGGUCCUUUCUUGGAUCAACCCGCUCAAUGCCUGGAGAUUUGGGCGUGCCCCCGCGAGACUGCUAGCCGAGUAGUGUUGGGUCGCGAAAGGCCUUGUGGUACUGCCUGAUAGGGUGCUUGCGAGUGCCCCGGGAGGUCUCGUAGACCGUGCACCAUGAGCACGAAUCCUAAACCUCAAAGAAAAACCAAACGUAACACCAACCG
+((...((((((.......))))))........))......................(((((((((((.(((((((((((((((((..((((((....))))))((((.(((((..((.(((((..............))))).))....))))).)))).(((....))))))).)))))))))(((...(.(((......))).)..)))....)))).))(((......)))((........))))))))))).......((.(((((.......)))))..)).....................................
+
+> RF00094_A
+AUGGCCGGCAUGGUCCCAGCCUCCCCGGUGGCGCCGGCUGGGCAACAUUCCGAAGGGGACCGUCCCUCGGUAAUGGCGAAUGGGACCCA
+...((((((.........(((........))))))))).......((((((((.(((.(...)))))))).))))..............
+
+> RF00100_A
+GGAUGUGAGGCGAUCUGGCUGCGACAUCUGUCACCCUAUUGAUCGCCAGGGUUGAUUCGGCUGAUCUGGCUGGCUAGGCGGGUGUCCCCUUCCUCCCUCACCGCUCCAUGUGCGUCCCUCCCGAAGCUGCGCGCUCGGUCGAAGAGGACGACCUUCCCCGAAUAGAGGAGGACCGGUCUUCGGUCAAGGGUAUACGAGUAGCUGCGCUCCCCUGCUAGAACCUCCAAACAAGCUCUCAAGGUCCAUUGUAGGAGAACGUAGGGUAGUCAAGCUUCCAAGACUCCAGACACAUCCAAAUGAGGCGCUGCAUGUGGCAGUCUGCCUUUCUUU
+(((.((((((.((...((....((((((((((.(((((..(((((((...........))).)))))))..))...)))))))))).)).))...))))))...))).......((((((((((.((.....))))))(((....(((......))).)))...)))).)).............................(((...((.((((((......((((..((.((.............)))).))))...)))))).))...)))......................(((.((((((((((.....)))))..)))))..)))
+
+> RF00102_B
+GGCUCGUCUGCCGUAGUCUGGAGAAGAAUCGCCAGGGUUGCGUUGCGGUGUGCCCCGGUUCGAGGCCGGCCGGAUUCCGCGGCUAACGAGGGCGUGGCUGCCCCGUCGUUUCCAAGACCCCAUAGCCAGCCGACUUCUCCAGUUACGGAGCGAGCCCCU
+((((((....(((((..(((((.......(....((.....(((((((.......((...))..............)))))))..(((.((..........))))).........(...).....)).)........))))).)))))..))))))...
+
+> RF00106_B
+AGUAUUUGGUAUCUGUGCUCUGCUGAAGCCAGAUUACCUCGGUUAGAUAAUCUGCCAGGAUUAGCUAACCUUCGAAAAAACCACCUGCCAGGGUGGUUUUUUCGU
+.......((((.(((.(((.......))))))..))))..((((((.(((((.....)).))).))))))..(((((((.((((((....))))))))).)))).
+
+> RF00107_A
+GACACAUAGGAACCUCCUCAAAGGAUUCUAUGGACAGUCGAUGCAGGGAGUGACAGCUCCCUGUAUCGGCGAUUUA
+....(((((((.(((......))).)))))))....((((((((((((((......))))))))))))))......
+
+> RF00109_A
+AGAAAUUCGUAUCUUAAGGAAACAGCUUUCAAGUGCCUUUACUGCAGUUUUUCAGGAGCGCAAGAUAGAUUUGGGAUAG
+..((((...((((((....(((....)))...(((.(((..(((........))))))))))))))).)))).......
+
+> RF00114_B
+UGGGAUCGCUGAAUUAGAGAUCGGCGUCCUUUCAUUCUAUAUACUUUGGAGUUUUAAAAUGUCUCUAAGUACUGAAGCAACAGCUAAAAUCGUUUCUGAGUUUGGUCGUGACGCA
+......((((((........))))))..................(((((((...........)))))))..............................................
+
+> RF00140_B
+GUCUGUGCGUUUCCAUUUGAGUAUCCUGAAAACGGGCUUUUCAGCAUGGAACGUACAUAUUAAAUAGUAGGAGUGCAUAGUGGCCCGUAUAGCAGGCAUUAACAUUCCUGAU
+...(((((((.(((.................................)))))))))).......................................................
+
+> RF00161_A
+UGGAGCAGAGGCUCUGGCAGCUUUUGCAGCGUUUAUAUAACAUGAAAUAUAUAUACGCAUUCCG
+(((((((((((((.....))))))))).((((.((((((........)))))).))))..))))
+
+> RF00162_A
+UUCUUAUCAAGAGUGACGGAGGGAUAGGCCCUAUGAAGUCCGGCAACAUCCAAUUAUUUUGGAGAUGUGCUAAUUCCUACAGGUUUAUCCUGAGAGAUGAGAA
+((((((((......(((...(((.....)))......))).(((.((((((.........)))..))))))........((((.....))))...))))))))
+
+> RF00163_B
+AUCCAGCUGACGAGUCCCAAAUAGGACGAAAUGCGCAUCCUGGAU
+((((((.......((((......))))...(((()))).))))))
+
+> RF00164_B
+CUUUCCCGAGGCCACGGCGAGUAGCAUCGAGGGUACAGGAAAG
+.(((((....(((.((((.....))..))..)))...))))).
+
+> RF00165_A
+GCACUCUCUAUCAGAUUGGAUGUCUUGCUGCUAUAAUAGAUAGAGAAGGUUAUAGCAGACUA
+...........................((((((((((...........))))))))))....
+
+> RF00167_A
+AAUGAAUCACGCUGACUCACUCAUAUAAUCGCAAGAAUACGGCUUGCGAGUCUCUACCAGCCGACCGUAAAUCGGCUGACUAUGAGUGGCAAUGUCAGGA
+.................((((((((...(((((((.......)))))))........(((((((.......)))))))..))))))))............
+
+> RF00168_B
+CGCAUAAAUAGAGGAGCUGCCAAGCAUGUAUUUGGCGAGGUGUUAAGGAGAAGAACCUCCAAUACUCGCUGAAGAAGGUUUGGCUGCCGAAAGGGUGAGCUUGUUCUUGAGCUCAUCCUUGGUGGUAAACACAAAGUUUACCACUGUCAUGGGACCUCCCAUGAAGCGCUAUUUAUGCA
+.....((((((....((.((((((......((((((((...........................)))))))).....)))))).))...((((((((((((......))))))))))))((((((((((.....)))))))))).(((((((....)))))))....)))))).....
+
+> RF00169_B
+GUCGGGGACCUCUUAAGAUGAGAGACUUCUGAACCGGGUCAGGAUCGGAAGAUAGCAGCCCUAAGGAAAGGCCUUUUGUGCUAAGAGUCUUCUCUGACUUAC
+.((((.((.((((..((.(((((...((((.....(((.(.(.(((....)))..).))))...)))).....)))))..)).))))...)).)))).....
+
+> RF00171_A
+GAAAUUCCUCAGAUUUCUCCCUGUUGACCAGGAGUUAUCGGUGAGUUGCGCUUUGUGCUUUGCGUAAGGGAUUUCUCUCGUACAGGUACGAUCUCGGACCAGCUACGGGUUUGAAGGGUGAGCCUAUUCUUCGGAAGGGUAAAUUGUAACUUUCACCAAUAAGCAAUG
+(((((((((..(((......................))).......(((((..........)))))))))))))).(((((.......................))))).......(((((.(((.(((....)))))).............)))))...........
+
+> RF00172_A
+AUGGAGACAUGGCGUAAAGCCAGGGAGUAAGGGACACGAACUCAUUUAGACUAUAACUUGAACUGAGUUACAUCUCAUUUU
+...((((..((((.....))))....((((.....................................)))).)))).....
+
+> RF00173_B
+CAACAGCGAAGCGCGCCAGGGAAACACACCAUGUGUGGUAUAUUAUCUGGCA
+..............(((((.......(((...)))...........))))).
+
+> RF00175_B
+GGACUCGGCUUGCUGAGGUGCACACAGCAAGAGGCGAGAGCGGCGACUGGUGAGUACGCCAAAUUUUGACUAGCAGAGGCUAGAAGGAGAGAGAUGGGUGCGAGAGCGUCAAUA
+...((((.(((((((.........)))))))...))))...(((((((....))).)))).........(((((....))))).............(((((....)))))....
+
+> RF00176_A
+GACCUAGACACGGUUGAUCUCACCUUCGGGGGGGCUAUAGAGAUCGCUGGAAGCAUUACCGGACAACCGGAACAUUGCAGCAAUGCAGCCC
+..........((((.((((((.(((...)))........)))))))))).........((((....))))....(((((....)))))...
+
+> RF00177_A
+AGGUCACUGCUAUCGGAGUCCGAUUUAGCCAUGCUAGUCCACCGAGCCCUUGCGGCUUGGGGCGGAUAGCUGAGUAGCACGUGGCUAACCUACCCUGUGGACCGGAAUAACCUCGGGAAACUGAGGCUAAUGCCGGAUAAGAGAGGGAUACUGGAAAGUUCCCUCUCAGAAAUGCUACGGCGCCACAGGAUGGGGCCGCGGCUGAUUAGGUUGUUGGUGAGGUAACGGCUCACCAAGCCAGUGAUCAGUAACAGCCGUGGAAGCGGGAGCUGUCAGUCGUGUUCUGAGACAAGAACACGGGCCCUACGGGGCGCAGCAGGCACGAAACCCUCACAAUGCACGAGAGUGCGAUGGGGGGACUCCGAGUGCGAUCUUCCCACAAGGAAGGUCGCUUUUCUGCAGUGUAAGGAGCUGCAGGAACAAGGGGUGGGCAAGACGGCUGCCAGCCGCCGCGGUAAUAGCCGCACCCCGAGUGGUGACCG
+.((((((((((.((((((((.......(((.(((..(((..(((((((.....))))))))))......(((.......(((((((..((...(((((((.((((.....((((((....))))))......))))....((((((((...........))))))))...............)))))))..))))))))).(((.(..(((..((((((((.(...).)))))))))))....).)))..((((((((....))))...))))))).((((((..........)))))).((((....))))...)))))).......(.(((...(((((....))))).))))..))))))))..(((..(..((......)..)).)))..((((((((.........))))))))....((((((.......((((....................)))))))))).)))))))))).
+
+> RF00179_B
+GUAUGUGAAAGUGUAAAAUAGAAUGUUACUUUGGAAUGACUAUAAACAUUGAAAGAAGACUGGAAACAUAC
+((((((...(((.........((((((....(((.....)))..))))))........)))....))))))
+
+> RF00180_B
+CUGCUUUGAGGACAAAGAGAAUAAAGACUUCAUGUUC
+((.((((......))))))..................
+
+> RF00181_A
+UGGAUCAUUGAUGAACAAAAAAAAAAACAUCUGGGAGUCCUCUGAGACAUCCAUGAUGACCACAACAUUGGGAGUCUGAGGUCCAC
+.(((((.........................................................................)))))..
+
+> RF00182_A
+GAGGGUCAGGAUGUCAUCUUCAGCCAAUUCGACAGCCUGAGAGUCAGCUCUAACCAGAGCCCACAAGGUAAUCUGGGGAGUAAUGAACCCGGUAAUGUCGGUGGUAAUGAUGCUCUGGCAACCUCCACU
+...........(((((...((..(((...(((((.((......(((.(((...(((((.((.....))...))))).)))...)))....))...))))).)))....)).....))))).........
+
+> RF00183_B
+CUGAGGGUCCCCACCUGGGACCCUUGAGAGUAUCAGGUCUCCCACGUGGGAGACAAGAAAUCCCUGUUUAAUAUUUAAACAGCAGUGUUCCCC
+..(((((((((.....))))))))).......((..(((((((....)))))))..)).....((((((((...))))))))...........
+
+> RF00184_B
+CCAUAAUUACGUCUACAUAACCGACGCCUACCCCAGUUUCAUAGUAUUUUCUGG
+.........((((.........))))......((((..............))))
+
+> RF00192_A
+AUGGGAAAUUCCCCCUCCUAUAACCCCCCCGCUGGUAUCUCCCCCUCAGACUGGC
+((((((.........)))))).........((((((.............))))))
+
+> RF00193_A
+UUGAAGUGGACGGAAUAAGUUCCUCGCGGAACUUUGUGUUGGGUUGGUAAAGACCCUUAUGAUGGUGAUAUAUCACUAGACAAUAACCGGAUGGGUAAAGUCUUUAAAAUGAUCGAGGGGAAAAUUAACCGUAUCCUCUCGUUGGUCUAAGCUCCCACAGAGUGGUAGUGGUCUCAAGUGAGGCUUAACGUAUGCGUGAACCAAAGAAGUUCUCCUUAGAGUGUGUGUUGUUUACCCAACACACUGUCCCUAUGGGGGGCCAACAUAGGUCCA
+........((((....(((((((....)))))))..))))((.((.....)).))........(((((....))))).(((....(((.....)))...)))........(((((((((((............))))))))...)))...(((.((((...)))).)))((((((....))))))............((((.......)))).((.(((...((((((((......)))))))).....))).)).(((((......))))).
+
+> RF00194_B
+UACUUGCGCGGCGCUAUAGCGCCGCGCUAGUGGGCCCCCGCGCGAAACCCGCACUAGGCCACUAGAUUCCCGCACCUGUUGCUGUAUAU
+((((.(((((((((....))))))))).))))((((...(((.......)))....))))...........(((.....))).......
+
+> RF00196_B
+GUUUUUAUCUUACACACGCUUGUGUAAGAUAGUUA
+....((((((((((((....))))))))))))...
+
+> RF00197_A
+AAAUGUAUUUAAAAUUUUUCAACAAUUUUUAAAUUAUAUUUCCGGA
+((((((((((((((.((......)).))))))).))))))).....
+
+> RF00198_A
+GGUUUAAUUACCCAAGUUUGAGGUAAUUGAAUGUUUCAGCCCAGAGUUUCGGCUCAUGUGGCUUGAAAAUAAAUUUUGGAACGUCCUGUGCUAAACGGGACAAA
+..((((((((((.........))))))))))..((((.(((..................)))..))))..............(((((((....).))))))...
+
+> RF00199_B
+GGUUUUAACCCAGUUAACCAAGGUUAGCAUGUAUUCCGACCAUUCGUAAGAGUGUGUUGAAUAACAAUAAUUUUUGGAACAGCUUCUUCGGGGUUAUCCGUCGAAGCAAA
+......(((...((.(((....))).))..)..)).(((((((((....))))).))))........................(.((((((((....)).)))))).)..
+
+> RF00207_B
+CUUGAUUGUAUUUUUAAAUUAAUUCUUAAAAACUACAAAUUAAG
+(((((((((((((((((........))))))).)))).))))))
+
+> RF00209_A
+UACGAGGUUAGUUCAUUCUCGUAUACACGAUUGGACAAAUCAAAAUUAUAAUUUGGUUCAGGGCCUCCCUCCAGCGACGGCCGAACUGGGCUAGCCAUGCCCAUAGUAGGACUAGCAAAACGGAGGGACUAGCCAUAGUGGCGAGCUCCCUGGGUGGUCUAAGUCCUGAGUACAGGACAGUCGUCAGUAGUUCGACGUGAGCAGAAGCCCACCUCGAGAUGCUACGUGGACGAGGGCAUGCCCAAGACACACCUUAACCCUAGCGGGGGUCGCUAGGGUGAAAUCACGCCACGUGAUGGGAGUACGACCUGAUAGGGCGCCGCAGAGGCCCACUAUUAGGCUAGUAUAAAAAUCUCUGCUGUACAUGGCACAUGGAGUU
+(((((((.........)))))))....................................((((...))))................(((((.......)))))........................(((((((.((((((((.((((((..((((((((..((((((....))))))..(((((...((.((((.(((..........))).))))....)).....)))))((((..)))).)))).))))...((((((((((...))))))))))....(((((...))))).)))))).)).(((....)))............))))))...)))))))..................((((...)))).....
+
+> RF00210_A
+AUGCAGGUAGCCCCAACUGACACAAACCGUGCAACUUGGAACCCCGCCUGGUCUUUCCAGGUCUAGAGGGGUGACACCUUGUACUGUGUUUGACUCCACGCUCGGUCCACUAGCGAGUGUUAGUAGUAGUACUGUUGCUUCGUAGCGGAGCAUGACGGCCGUGGGAAUCCCUCCUUGGCAACAAGGACCCACGGGGCCGAAAGCCACGUCCUGAAGGACCCGUCAUGUGUGCAACCCCAGCACGGCAGCUUUAUUAUGAAACCCACUUUAAGGUGACACUGAUACUGGUACUCAAACACUGGUGACAGGCUAAGGAUGCCCUUCAGGUACCCCGAGGUAACACGCGACACUCGGGAUCUGAGAAGGGGACUGGGGCUUCUAUAAAAGUGCCCAGUUUAAAAAGCUUCUAUGCCUGGAUAGGCGACCGGAGGCCGGCGCCUUUCCUUUGACCACUACUGUUUA
+.....((...))................((((((.......((((.(((((.....)))))......)))).......)))))).((((((((..(((...(((((.((((....((((......((((....((((((.((...))..((((((((((((((((.......(((((....))))).)))))))(((.....)))..((((....)))))))))))))((((.......))))))))))....))))......))))....))))..)))))...)))...))))))))......(((((........((((((((((...(((((.............))))).))))))..)))).((((((((..........)).))))))...............)))))...(((((.((((...)))))))))......................
+
+> RF00214_B
+UGUAACGGGGCAAGGCUUGACCGAGGGGACUAUAACAUGUAUAGGCGAAAAGCGGGGUCUCGGUUGUAACGCGCUUAGGAAGUCCCCUCGAGG
+(((......))).........((((((((((..........((((((....((((........))))....))))))..).)))))))))...
+
+> RF00215_B
+AGCGAGUAAGACAGACUCUUCAGUCUGAGUUUGUGGAGAUGAGUGUAAAUCUGGCAUAGCAUACAGGUUA
+..........((((((((........)))))))).............((((((..........)))))).
+
+> RF00216_A
+AAUUCCAGCGAGAGGCAGAGGGAGCGAGCGGGCGGCCGGCUAGGGUGGAAGAGCCGGGCGAGCAGAGCUGCGCUGCGGGCGUCCUGGGAAGGGAGAUCCGGAGCGAAUAGGGGGCUUCGCCUCUGGCCCAGCCCUCCCGCUGAUCCCCCAGCCAGCGGUCCGCAACCCUUGCCGCAUCCACGAAACUUUGCCCAUAGCAGCGGGCGGGCACUUUGCACUGGAACUUACAACACCCGAGCAAGGACGCGACUCUCCCGACGCGGGGAGGCUAUUCUGCCCAUUUGGGGACACUUCCCCGCCGC
+.............((((.((((.....((((((.((.((((.(((.(((......((((.(((...))).((((.((((..((((.....))))..)))).))))......(((((........))))).)))).........)))))))))).)).))))))..))))))))......................................................................................(((((((((........(((....)))....)))))))))...
+
+> RF00220_A
+GGCUUAGGUGAUGAAUUAGAAGAAGUCAUCGUUGAGAAAACGAAACAGACGGUGGCCUCAAUCUCAUCUGGUCCAAAACACACACA
+((.((((((((..........((.(((((((((..............))))))))).))....)))))))).))............
+
+> RF00225_B
+GAAUUCGUCGAUUCGGUUGCAGCAUUUAAAGCGGUUGACAACUUUAAAAGAAGGAAAAAGAAGGUUGAAGAAAAGGGUGUAGUAAGUAAGUAUAAGUACAGACCGGAGAAGUACGCCGGUCCUGAUUCGUUUAAUUUGAAAGAAGAAAAUG
+........................(((..((..(((...)))))..))).................................(((((.(((((..)))((((((((.........)))))).)).)).)))))..................
+
+> RF00230_B
+AUCAGAAAAGUAACUAUUUUUGAUCUUCAGGGAGCCUGUGGUGAUUGUGAAUAGGUGGUUGGAAGUAGUGAAAGUGGGCUGAUUUUGAAAAUGAAUUUGAAACAAUGAAAAUUCGGUGCGCACACCUUACAGUGCAGCUUGUUGUUAAACAAGGCAGAGAUGUAAAGGGAUAGUCCCUUUAUAAUUGAGGUGGCACCGCGUUACCAACGCCCUCACACGGAAGUAUAUUCUGUGUGUGGGCUUUUU
+............((((((((.............((((((...........)))))).....)))))))).....................................................................................................................((((.......((((.....))))))))................................
+
+> RF00231_A
+AAUCUGUAGUCUUGGAGCCGCACAGGGUUGGUGGUACCCUCGAGCACACCAGACUUGCAGAAAAAGCAUACUCCAGAGGAAGCUGAGGCAUGCCUGCUCGAGAGCCAGCUGUUCCAUGUGCAAUUUUCCUCUGAUAGUUUCUGGUCACUGUUGCCACGGUGAUAAUGACUGGGCUAUGUCAUUAUCUAUCCGCCAACAGUAAGAGAAGCUUUGCAGUCGAGAUAUUGUUUAGCAGAUGGAGUGUUUUCUGUUGAACACUAAGUACUGCCACAAGU
+..((((((((((...........(((((.......)))))..........)))).))))))............((((((((......(((((...(((........))).....)))))......)))))))).............(((((((.......(((((((((........))))))))).......)))))))............(((((.........((((((((((..........)))))))))).......))))).......
+
+> RF00232_A
+CUCACCCAGGGCUCCUGUAGCUCAGGGGGCAGGCCUGAGCCCUGCGUCUGACCCACGACCGUCCAGUCCCCCGACGGGGCACCUGGUCCUGAGGGGGAUCCGCCUUGAUCCCCACCGAAGCAGGGGAUCUGACCAACCUGGAGCUCAGCUGGAUGUUACAGGCGUGCAAA
+.......(((((((..((.((((...))))..))..)))))))(((((((.........((((((.((((((..((((((.....)))))).))))))((((..(((((((((.........))))))).))......))))(((.)))))))))...))))))).....
+
+> RF00233_B
+UCAGGUCGCCAGUGCGACACCCGUUCCCACACAACGGGCAUUGGGGUGCAACUCCCCCGUCUAUCCUGAACGUCAUCAGGACCA
+....(((((....))))).((((((.......))))))....((((.......)))).......(((((......)))))....
+
+> RF00234_B
+AUUAUAGUUAAAGCGCCCGAACUUGAGUGAUAUAGUUCAUUUAAGUUGACGAGGAUGGGGAGAAUCGAAUCUUCGGCGGAUGCCCCACGGUACCGCACUACCGUUAGCGGUUGGUAAAAGCAGAAAGUGAUUUCUGUCACAAAGCCAAUCUGGUGUUAAA
+...................(((((((((((......)))))))))))........(((((....((((....))))......)))))(((((......))))).....((((((.....(((((((....))))))).......))))))..........
+
+> RF00236_A
+GCUUUCUCCCAGGUUUGGACUGGGGGUUAGCCGACGCCCUGUGAGUUACCGCUCACGGGGCGUUCAACAUUUUUCAGGUAUU
+(((..(((((((.......)))))))..))).((((((((((((((....))))))))))))))..................
+
+> RF00242_A
+AUACAAGAUUAUAAAAACAACUCAGUGUUUUUUUCUUUGAAUGAUGUCGUUCACAAACUUUGGUCAGGGCGUGAGCGACUCCUUUUUAUUUUGUU
+....((((....(((((((......))))))).))))........(((((((((................)))))))))................
+
+> RF00250_B
+GGUUUCUCUUGUUAGACCAGGUCGAGCCCGGGAGCUCUCUGGCUAGCAGGGGAACC
+(((.(((((((((((.(((((..((((......)))))))))))))))))))))))
+
+> RF00252_B
+UGAUGUACCCCAUUAAUUUGGGAUGCUAAAGUCAUUUAAUGCUGACCUCCACUGAGUGGAUUAAGGUCAAGGUAUGAAGUCCUAUUCGCUCCUGAUAGGAACGACUUCAUAUUGCUUAUAUAUGUGCUAACGCACAUAUAUAAAUGCUCAUGCAAAACUGCAUGAAUGCCCCUAAGGGAUGC
+........((((......))))....((((....))))....((((((((((...))))....)))))).((((((((((((((((.......))))))....))))))))))..((((((((((((....))))))))))))....(((((((....)))))))....(((...)))....
+
+> RF00259_A
+CAUUGUUCUGAUCAUCUGAAGAUCAGCUAUUAGAAGAGAAAGAUCAGUUAAGUCCUUUGGACCUGAUCAGCUUGAUACAAGAACUACUGAUUUCAACUUCUUUGGCUUAAUUCUCUCGGAAACGAUGAAAUAUACAAGUUAUAUCUUGGCUUUUCAGCUCUGCAUCGUU
+..............((((((((..(((((..(((((....((((((((..(((..((((..................)))).)))))))))))...))))).)))))....))).)))))(((((((..(((((.....)))))...((((....))))...)))))))
+
+> RF00260_A
+UACAGCGGGGGAGACAUAUAUCACAGCCUGUCUCGCGCCCGACCCUGCUGG
+..((((((((((((((............))))))........)))))))).
+
+> RF00261_B
+AAUGCGCCUGCAGCUCGCGCUCCCGCGCCGAUCCCGAGAGCGUCCGGGCCGCCGUGCGCGAGCGAGGGAGGGCGCGCGCGCGGGGGGGGCGCGCUCGUGAGUGCGGGCCGCGCUCUCGGCGGCGCGCAUGUGCGUGUGUGCUGGCUGCCGGGCUGCCCCGAGCCGGCGGGGAGCCGGUCCGCUCCAGGUGGCGGGCGGCUGGAGCGAGGUGAGGCUGCGGG
+......((.(..((((((((....)))).........))))..).)).((.(((((((((.((........)).))))))))))).((((((((((((....))))).))))))).((((((((((((((....)))))))..)))))))..(((((((..((((((.....)))))).((((((((.((.....)).)))))))).)).).....)))).
+
+> RF00264_B
+ACUCUCUCGGCUCUGCAUAGUUGCACUUGGCUUCACCCGUGUGACUUUCGUAACGGGGAGAGAGAGAAAAGAUCUCCUCAGGACCUCGGAUGGGCCUUACUGUGGCCUCUCUUUCCUUGAGGGGUGCAACAGGC
+.(((((((..(((((...((((((((............)))))))).......))))).))))))).......(((((((((.....(((.(((((.......))))).)))...)))))))))..........
+
+> RF00286_A
+CGCAACUUGGGCAGAAGUACUGCUCCAGUUGUCACUGGACCUCCCCAGAGUAAACUGCCUUUUGAUGACCAGGGCGAAUUGAGUGAAAUCGUCAUGGACAGAUACGGGGCAGACAAUU
+.((((...((((.........))))...))))......................(((((((.......(((..((((...........))))..)))........)))))))......
+
+> RF00290_A
+AACGUUGCAUGAUCGUAAAACAUGCCCGGCUUACCGUGAGCCGCCUUUGAAAGAAAGGUUUACACGGACUCUGUUGCGUUACGCACGUACCUAACCCGUGCCAGCAGAAUAAAGACCUUUUGGUUUCUACAGUUUUUUCC
+......(((((.........))))).((((((.....))))))(((((.....))))).......((..(((((((......(((((.........)))))))))))).......)).......................
+
+> RF00362_B
+GGCCGACAGGAGUAAUUCCCGCCGAAACAGGGUUUUCACCCUUCCUUUCUUCGGGUGUCCUUCCUCGCGCCCGCAGGAC
+((((((.((((......((((..((((.(((((....)))))...))))..))))..))))...))).)))........
+
+> RF00363_B
+GGGGGUCUUAGUGGAAGUGACGUGCUGUGAAUACAGGUCCAUAGCACCGCUAUCCACUAUGUCUCGCCCG
+..(((...(((((((((((..((((((((.((....)).)))))))))))).)))))))...))).....
+
+> RF00364_A
+ACUAUUUUCUGCAUUCGCCCUUGCGUGUCCAUUGUUGCAAGGAGCGAUUUGGAGAAAAUAAA
+..((((((((.((.(((((((((((..........))))))).))))..)).))))))))..
+
+> RF00365_A
+UAUUAACCUGAUCAGCCCCGGGGUUGCCUGUCUUAGCACUAACUCCGGGCCUGAAGAGGUUGACAA
+..(((((((..((((.(((((.((((..((......)).)))).))))).))))..)))))))...
+
+> RF00366_B
+CUUUUAAAUUUUGCCGUAGCAGAUAGUUGAUACUUAAUGCUAUCUUUUGCGGUGAAAUUUGAAAG
+(((((((.(((((((((((.(((((((...........))))))).))))))))))).)))))))
+
+> RF00367_B
+UCUAACGGGAAGUGUGUAAGCACACACGUAAUUUGCAAGCGGUGCUUCACGCUCUUCGUUAAAAU
+..(((((((.((((((.((((((...(((.........))))))))))))))).)))))))....
+
+> RF00373_A
+AGGGGGCUGGUGACUAUCCAACUGGGAGGAAGCUCUGCCCACUCAAUUACGUAGAUUUCCUGAGAAGGAAUAAACAAAGUAUAGAAACGACACGGUUCCAAAAAAUAUGACUAUGAUAUUUUAAAAUUGAGGA
+.................((.....))............................(.(((((....))))))..............................................(((....)))......
+
+> RF00374_A
+GUCUGUACUAGUUGGCCGACUAGCUCUGUACCUGGCGGACCCGUGGUGGAACUGACGAGUUCGGAACACCCGGCCGCAACCCUGGGAGACGUCCCGGGGAC
+..(.(..((((((....))))))..).)......((((..(((.(((((((((....)))))....)))))))))))..((((((((....))))))))..
+
+> RF00378_B
+UGACCCUUCUAAGCCGAGGGUCACCUAGCCAACUGACGUUGUUAGUGAACACCAUUGUUCACACUUAUAGACGGCCAAUCACACUUCUUGUGGUUGGCCUUUUUUUU
+((((((...........))))))...............((((..(((((((....)))))))....))))....((((((((.......))))))))..........
+
+> RF00381_B
+UGAUGUCCCUCUCCCACCCCUGAAGAUCCCAGGUGGGCGAGGGAAUGAUCAGCGGGAUC
+.....((((((.((((((.............)))))).))))))...............
+
+> RF00382_A
+AGUCGGGGACGACCACAACAAAAAAGAAUGAGCCGGCGGCGCCAGGAAAAGCGCGGCCGGCAAA
+...............................((((((.(((.(.......)))).))))))...
+
+> RF00383_A
+GGCGCUUCAGGUGGCCCUGGGCCGAAAGUACUGACGACAGACCAGAAGCGGGAAGCUGGGUGUUGAUGUGUGAUGCGACCGGUCUGUCGCAACGUCGUGCCUGCAGGCUCACAGGUU
+..................................(((((((((.....(((....)))...((((..........)))).)))))))))............................
+
+> RF00384_B
+GAAUCUUUUCACAAAAGAUUUUAUCCGAUAAUUCUUCCUCGGACAAUUUCGGAUUUGAAUAC
+.(((((((.....)))))))...(((((.((.(((.....)))...))))))).........
+
+> RF00385_B
+GGAAGAUAGGCAUGUAGCUUAGCACCUACAUGUCUAUCGCC
+((..(((((((((((((........))))))))))))).))
+
+> RF00386_A
+UUAAAACAGCCUGUGGGUUGCACCCACCCACAGGGCCCACUGGGCGCUGGUACACUGGUAUUAAGGUACCCUUGUACGCCUGUUUUAUAU
+.(((((((.(((((((((.......)))))))))(((.....)))((..((((...((((......))))...)))))).)))))))...
+
+> RF00387_A
+CGCUCCAGGGGAAUCAGGGCAUCGCCUCCUUUUCUGGGAGGACACUCCCUUCUGAUGGUGAAUGGGAACUCCCUUCCUCCUGCAGCAGCCUGCCUGCAGCUGUCCUGGUAGAACAGUGUGGACAUUGCAGAAGCUGUCACUGCCCCAGAAAGAAAGCACCCCAGAGCC
+.((((..((((..((((((.....((((((.....)))))).....))))((((..((.(((.(((....))))))..)).((((((((....((((((.(((((..............)))))))))))..))))...))))..))))..)).....)))).)))).
+
+> RF00388_B
+GUUGUAACUUAUGUUGCAACAAACGAGAACCGAUUAUAGUUCAUGGUGUCUCAUGAAUUAUUUAACUGUCCUCUGGGAUUCCCGUCCCAUGGCAGUCGGUUC
+((((((((....))))))))......(((((((....((((((((......))))))))......(((((...((((((....)))))).))))))))))))
+
+> RF00389_B
+GAAAACUCACCGCAACGAAACGAAACAAGUCGUUCAGAAACACUAGACCACGAGGGCCCCCCUAUAGUCCUGUUGAAGGUGCGGCAGGCCCCGUGCGAUAGGCUAACUGUGGUGUUCCCCGCACUCCGUCGAGCGGUUAAUACGACGCUUACCAAGAC
+........(((((.(((.(((((......)))))(((.....(((...((((.(((((..((......(((.....)))...))..)))))))))...))).....))).(((((.....))))).)))...))))).....................
+
+> RF00390_A
+UGAGUUCUCGAUCUCUAAAAUCG
+........((((.......))))
+
+> RF00391_A
+CAAAAGUCCCUGAACUCUCAAACGAAUCCGUAAUUAAAUAUUCUGCCCAAGCGGGGAAGGAUGAGAAGCUUCGACCAAGGUUCGACUUGAGCGCCAGCGAGAGAGCGUUGCCGCAGGCAACGACCCGAAGGGCGAAGCGCGCAGCGCUGAGUAAUCCUUCCCCCACCACCA
+....................................................((((((((((.....((((((.((....((((.((((........))))....((((((.....))))))...)))).))))))))...............))))))))))........
+
+> RF00433_B
+AGUCUUGAAAAAAAUUUCGUACGGUGUGCGUCGUAACAACAAGCAGCGUCUGAAAAGUUUUGUGAAUUUCCAAUUCUAUACAAAGCAAAGUGAAAAUAUCUGUAUUUUUACCUUUAUUCUGUGAAUAGAACGAAAAACAUACAUACAAGAUG
+.((((((.......(((((.(((.(((..((.......))..))).))).))))).....((((..((((...((((((.((.((.((((((((((((....)))))))).))))...)).)).)))))).))))..))))....)))))).
+
+> RF00434_B
+ACACCACUAACACAAGCCGAAUCCUGGGAAACAGGCAGAACUUAGGUUCGUAAGCUCGGGUAAUUGGAAGGUGGGCUGUCAACCCACCACCAUCUUACCGCCGCAUUGCCUUGUGUUUGGCC
+...(((..(((((((..(((..((((.....))))..((((....))))....((..............((((((..................))))))...)).)))..))))))))))..
+
+> RF00435_A
+GCCGCGACAAGCGGUCCGGGCGCCCUAGGGGCCCGGCGGAGACGGGCGCCGGAGGUGUCCGACGCCUGCUCGUACCCAUCUUGCUCCUUGGAGGAUUUGGCUAUGAGGA
+(((((.....)))))((((((.((....))))))))......((((((.((((....)))).))))))((((((.(((..((.(((....)))))..))).))))))..
+
+> RF00436_A
+UCAUUUGUAAGUCGCUUUGGAUAAAAGCGUCUGCUAAAUGACUAAAUGUAAAUGU
+(((((((((...((((((.....))))))..))).))))))..............
+
+> RF00437_B
+GUAGACAUUUCACAUCAUUCGCCGGGAUUGCGCAAAUGUUGCUUUGAAGUGUUGCAAACAUGCGAAUCCUAAACUCGGUUCACAACUUCGUUGGCUUAGUUUCCUGGCUUAUAUCCUGGAAACCCGUCGAC
+.....((((((....(((((((.......)))..)))).......))))))......................................((((((...((((((.((.......)).))))))..))))))
+
+> RF00444_B
+UUGACUUACAAAUGAGAAUCGUUAUGAUUAUCACGUCCGGUCGCGAGACUGGACGGUAACUGAAAGACCUUGGUUCGGACUUUCAGAUUAUCUCCUCAUCAGGCUAAUCACGGUUUUUGACCCGGCUCUUUGCCGGGUCUUUUUUUG
+.................................(((((((((....)))))))))....(((((((.(........)..))))))).......(((....)))...............((((((((.....))))))))........
+
+> RF00453_A
+UCGGCCACAAACACACAAUCUACUGUUGGUCGA
+(((((((...(((..........))))))))))
+
+> RF00458_A
+CCAACAAUGUGAUCUUGCUUGCGGAGGCAAAAUUUGCACAGUAUAAAAUCUGCAAGUAGUGCUAUUGUUGGAAUCACCGUACCUAUUUAGGUUUACGCUCCAAGAUCGGUGGAUAGCAGCCCUAUCAAUAUCUAGGAGAACUGUGCUAUGUUUAGAAGAUUAGGUAGUCUCUAAACAGAACAAUUUACCUGCUGAACAAAUU
+(((((((((......(((((((((.........................)))))))))....))))))))).........((((....)))).....((((.((((.....(.(((.....))).)...)))).))))..........(((((...((((......))))..))))).........................
+
+> RF00460_B
+CCACACAGCAUUUUACCCAGAGUCUGUCCCCAGACAUUGCACCUGGGGCUGUUAAAUUGUGAUUAAAGUGAGUU
+....(((((.......((((.(((((....))))).......)))).)))))..(((((.........))).))
+
+> RF00461_B
+GCUAGCUCGGGCCGGGAGGAGCCGCAGCCGGAGGAGGGGGAGGAGGAAGAAGAGAAGGAAGAGGAGAGGGGGCCGCAGUGGCGACUCGGCGCUCGGAAGCCGGGCUCAUGGACGGGUGAGGCGGCGGUGUGCGCAGACAGUGCUCCAGCCGCGCGCGCUCCCCAGGCCCUGGCCCGGGCCUCGGGCCGGGGAGGAAGAGUAGCUCGCCGAGGCGCCGAGGAGAGCGGGCCGCCCCACAGCCCGAGCCGGAGAGGGAGCGCGAGCCGCGCCGGCCCCGGUCGGGCCUCCGAAACCAUGAACUUUCUGCUG
+.((..(((.((((((......)))..))).))).))...........((.((.((.((..((((....((((((((.(((((......((((((......((((((..(((..(((.((((((((((((.((((.....))))..)).)))).))).)))))).(((...((((((..(((((((((.(((((.........))).))..))).))))))....)))))))))))).))))))...........))))))..))))))).)))))).......)))).....))......)).)).)).
+
+> RF00462_A
+AGUCUUCCUUUAACUGAAAAUUUUUCCUUACAAACAGAUUUGACCAGAAGGCA
+.((((((....(((((..................))).))......)))))).
+
+> RF00463_A
+AUUCCCACCGGGACCUGCGGGGCUGAGUGCCCUUCUCGGUUGCUGCCGCUGAGGAGCCCGCCCAGCCAGCCAGGGCCGCGAGGCCGAGGCCAGGCCGCAGCCCAGGAGCCGCCCCACCGCAGCUGGC
+..((((...))))..((((((((((.(((..(((((((((.......)))))))))..))).))))).(((..((((....))))..)))....)))))(((....(((.((......)).))))))
+
+> RF00465_B
+AUGGAGUCAGGCCAGCAAAAGCUGCCACCGGAUACUGGGCAGACGGUGCUGCCUGCGUC
+.....(.(((((.((((....(((((..(((...))))))))....))))))))))...
+
+> RF00466_B
+CCAGCCGCUGAGGUCAGGGGCUGGCCUUGUUGGACGCGCCGUCUUUCAGCGCUCCGUACCCAUGUUGCUUCAAGGAGGAUAUGGCUAUGGCAA
+((((((.(((....))).))))))..(((..(((((...)))))..)))....(((((.(((((((.(((....)))))))))).)))))...
+
+> RF00467_A
+AUUCCCUAACGAUUGCGAACACCUGAAUGAAGCAGAAGGCUUCAUUUGGUGACCCCGACGUGAUAGUUAGGGAAU
+..((((((((................(((((((.....)))))))....................))))))))..
+
+> RF00480_A
+UUUUUUAGGGAAAAUUUGGCCUUCCAACAAGGGAAGGCCAGGAAAUUUUCCU
+...............((((((((((......))))))))))...........
+
+> RF00481_B
+UUGGUGGCUCCAUCUUAGCCCUAGUCACGGCUAGCUGUGAAAGGUCCGUGAGCCGCAUGACUGCAGAGAGUGCUGAUACUGGCCUCUCUGCAGAUCAUGU
+.(((.((((.......))))))).((((((...(((......)))))))))...((((((((((((((((.((((....)))))))))))))).))))))
+
+> RF00483_B
+ACGACUGGGCAUUGCCCCCAGUUUCCCCCAAAUUUGGGCAUUGUCCCCGGGUCUUCCAACGGACUGGGCGUUGCCCCGGUUCACUGGGGACUGCCCUUGGGGUCUCGCUCACCUUCAGCAG
+..(((.((((...))))...)))...((((....))))....((((..(((...)))...))))((((.....((((((.................)))))).))))..............
+
+> RF00484_A
+AUAUGACUCUCUAGCACCGGGAGGCGAUGAAUUGGGACGCAGGCGCGACCACAGGGACCACUCCCCCUACACAGACAUGAGACCAUAGGGGAGCUGUCUGGGUGGCCUCAAGGAUAGGCGCUCCCCGAGGUAACCGGGCUAUCUGGGUU
+........(((....((((((..(((.....(((((.(((....))).((((..((((...(((((.....................)))))...))))..)))).))))).......)))..)))..)))....)))...........
+
+> RF00485_A
+GUGGGCUAUGGUGACAUGUACCCUGUGACAAUUGGAGGCAAAAUCGUGGGCUCCUUGUGUGCCAUCGCUGGUGUGCUGACAAUUGCCCUGCCUGUACCUGUCAUCGUGUCCAAC
+((.((.(((((.((((.((((...............((((........(((.........)))..........))))................)))).)))).))))).)).))
+
+> RF00487_B
+AAAAACGCUUUUACGAGGUAUCAGCACUUUUCUUUCAUUGGGGGGAAGGCGUGAGGAAAGUACCAAACAGCAGCAGACUUUUAAACUUUAAACAGACAGGUCUGAGAGCCUGAACUCUCAUUUUUCCUUUGACUUCAGCCUCCAAGGAGUUCCACCAACUUUGGCGCGCCGGCUUCACUUUCAUUAAGUGAAAGAGAGGUGCCCAGACAUG
+......(((..(((...)))..)))........(((.(((((((((((....((((((((..............((((((.................))))))(((((......)))))..))))))))...))))..))))))).)))..........(((((.(((((..((((((((.....))))).)))...))))))))))....
+
+> RF00488_B
+AUACUUACCUUAAGAUAUCAGAGGAGAUCAAGAAGUCCUACUGAUCAAACAUGCGCUUCCAAUAGUAGAAGGACGUUAAGCAUUUAUCAUUGAACUAUAAUUGUUCAUUGAAGUCAUUGAUGCAAACUCCUUGGUCACACACACAUACGGCGCGGAAGGCGUGUUUGCUGACGUUUCCAUUCCCUUGUUUCAAUCAUUGGUUAAUCCCUUGAUUCCUUUGGGGAUUUUUGGGUUAAACUGAUUUUUGGGGCCCUUUGUUUCUUCUGCCUGGAGAAGUUUGACACCCAAAUUCAAAUUGGUGUUAGGGGAGCUGGGGCCUUUCAAAAGAGAGCUUUGUAGAGGCAUUCUUUUUGACUACUUUUCUCUAGCGUGCCAUUUUAGUUUUUGACGGAGAUUCGAAUGAACUUAAGUUUAUGAUGAAGGUAUGGCUGUUGAGAUUAUUUGGUCGGGAUUGUAGUUUGAAGAUGUGCUCUUUUGAGCAGUCUCAACUUUGCUCGUUCCCGUUAUGGGAAAAAUUUUGGAAGGUCUUGGUAGGAACGGGUGGAUCUUAUAAUUUUUGAUUUAUUUU
+.........((((((.(((((((((..........)))).)))))(((((((((.(((((.............(((......................................................................)))....))))))))))))))....((((((...(((((((((((((...(((((.........((((((....))))))..........)))))...))))))).........(((((......)))))....(((((.((.......))))))).))))))..............................................................................................................................................................................................((((...)))).......................))))))......)))..)))...............
+
+> RF00489_A
+GCUAGAGAGACAAAAGGGCUUCCGCGACGGCGACGUUGAGGGGGCUCUUUUCUUUUGCGGUUUACUCUCCCCGUUUCCGU
+...............((((((((.(((((....))))).)))))))).................................
+
+> RF00490_A
+AGUCAAGAGUCUUUGGCACCGUUUUUGGUGAGCAGAUUUCUUUUGCCUAUUGAAGGGUGAAAGACAUG
+........((((((..((((.((((.((((.(((((.....))))).))))))))))))))))))...
+
+> RF00491_B
+CAACAAUUGCAUUCAUUUUAUGUUUCAGGUUCAGGGGGAGGUGUGGGAGGUUUUU
+......(((((((..((((...............)))).))))))).........
+
+> RF00492_B
+CUUUCGGGUCCCCAUUGCAGCCCCCGGAUGAGCCCGCAGUAUUUUCCUUAUAUGAUCAGGUCCCAUUGCGGGCGGCGCCGCUUGCCCGGAGCCUGAGAGGAUUAUGAAAACGUGGCGAGCGAAAUGGGGCCAGGGGACCUGGAG
+(((.(((((((((......(((((...............................((((((.((...(((((((....)))))))..)).)))))).............................)))))..))))))))))))
+
+> RF00493_A
+GGGCAAUGAUGUAAAGGUUUUACGACUGACCUUUGUAACUAUGAAGGUUUCUACACUUGACCUGAGCUCA
+((((........(((((((........)))))))...............................)))).
+
+> RF00494_A
+GAUCAAUGAUGAAACUAGCCAAAUCUGAGCAUCAGAAGGCUUUCCAGUCUACCUGAUGCAUGAUCUCUACAGUUCUGAGA
+..((......(((...............(((((((.((.((....)).))..))))))).............)))...))
+
+> RF00496_B
+CACUCCCUGUAUUCUAUGCUUGUGGGCGUAGAUUUUUCAUAG
+............((((((((....))))))))..........
+
+> RF00497_B
+CUGGGAGAGACCAGAGAUCCUGCUGUCUCUACAGCAUCAUUCCAGGCACAGAGCGCCAGAAAAUGGAAUGGUGCUGUUGAAUCAACAGGUUCU
+((((......))))(((.((((.((..((..((((((((((((.(((.......))).......))))))))))))..))..)).)))).)))
+
+> RF00498_A
+UGCCAUCGUCGUCGAUCUCUAUCAACUAUCCUUGCGACUAUGGCA
+((((((.(((((.....................))))).))))))
+
+> RF00499_A
+UCCUAGAGAGCUUGGCCGUCGGGCCUUAUACCCGACUUGCUGAGUUUCUCUAGGAGAGUCCCUUUCCCAGCCCUGAGGCGGCUGGUCAAUAAAAGCCUCAAA
+((((((((((((((((.((((((.......))))))..))))))))).)))))))...........((((((.......)))))).................
+
+> RF00500_B
+GGGUAACCACUAAAAUCCCGAAAGGGUGGGCUGUGGUGACCUUCC
+((((.(((((......(((....)))......))))).))))...
+
+> RF00502_B
+GGGUAACCACUAAAAUCCCGAAAGGGUGGGCUGUGGUGACCUUCCAAGCCAA
+((((.(((((......(((....)))......))))).))))..........
+
+> RF00503_A
+UAACUAGAUCACAGAGAUGUGAUGGAAAAUAGUUGAUGAGUUGUUUAAUUUUAAGAAUUUUUAUCUUAAUUAAGGAAGGAGUGAUUUCAAUGGCACAAGAUAUCAUUUCAACAAUCGGUGACUUAGUAAAAUGGAUUAUCGACACAGUGAACAAAUUCACUAAAAAAUAAGAUGAAUAAUUAAUUACUUUCAUUGUAAAUUUGUUAUCUUGGUAUAGUACUAAAAGUAUGAGUUAUUAAGCCGUCCCAACUUAAUAACCAUGUAAAAUUAGCAAGUGAGUAACAUUUGCUAGU
+.......((((((....))))))...........................((((((.......))))))........((((((((.((..........)).)))))))).....((((((((...........).)))))))...((((((....))))))........((((.(((((....((((.......))))..)))))))))................(((((.(((((((((.........))))))))))))))...(((((((((((.....)))))))))))
+
+> RF00505_A
+CUUCCGAUGUAGGCCCGUAUUCUUCGCCUGUACCACGGGUCGGUUUUAGUACAGGCGUUUUCUU
+...........(((((((................))))))).......................
+
+> RF00506_B
+ACAUCCAUGAAACGCAUUAGCACCACCAUUACCACCACCAUCACCACCACCAUCACCAUUACCAUUACCACAGGUAACGGUGCGGGCUGACGCGUACAGGAAACACAGAAAAAAGCCCGCACCUGACAGUGCGGGCUUUUUUUU
+...(((.((..((((.(((((..((((.(((((.......................................))))).))))...))))).)))).))))).....((((((((((((((((......))))))))))))))))
+
+> RF00507_B
+GAGUCCGGGGCUCUAGUGCCGCUCGACUAGAGCCCUGUAAUGGUACAGACAUAGAUUACUGUGUCCGUGCAUUUGACGU
+......(((((((((((........)))))))))))...........................................
+
