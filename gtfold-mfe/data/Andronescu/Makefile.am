@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-gtfold_datadir = $(datadir)/@PACKAGE@/Andronescu
+gtfold_datadir = $(datadir)//Andronescu
 
 gtfold_data_DATA = \
 	stack.dat\

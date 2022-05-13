@@ -9,14 +9,16 @@ BASH=$(shell which bash)
 RANLIB=$(shell which ranlib)
 LIBTOOL=$(shell which libtool)
 LIBTOOLIZE=$(shell which libtoolize)
+SHTOOL=$(shell which shtool)
+AUTOCONF=$(shell which autoconf)
 
 BUILD_PLATFORM=$(shell uname -s)
 ifeq "$(BUILD_PLATFORM)" "Darwin" # Apple / Mac OSX
 	SED=$(shell which gsed)
 	GREP=$(shell which ggrep)
 	READLINK=$(shell which greadlink)
-     #LIBTOOL=$(shell which glibtool)
-	#LIBTOOLIZE=$(shell which glibtoolize)
+	LIBTOOL=$(shell which glibtool)
+	LIBTOOLIZE=$(shell which glibtoolize)
 endif
 
 GTFOLDMAKEDIR=../gtfold-mfe
@@ -168,28 +170,36 @@ default: make_GTFoldPython
 
 libconfig-reinit: make_runLibDepsConfigureScripts make GTFoldPython
 
-# May ocassionally need to rebuild when autotools versions change:
-# $ export _lt_pkgdatadir=/usr/local/share/libtool
-# $ sudo ln -s /usr/local/opt/libtool/share/aclocal /usr/local/share/libtool/libltdl/m4
-# $ sudo ln -s /usr/local/share/libtool/config /usr/local/share/libtool/libltdl/config
-# $ cd ../libgmp-* && autoreconf --install --force --verbose 
-# $ aclocal && libtoolize -f && autoheader && automake
-# $ cd ../libgomp-* && autoreconf --install --force --verbose
-# $ aclocal && libtoolize -f && autoheader && automake
+## May ocassionally need to rebuild when autotools versions change:
+## $ export _lt_pkgdatadir=/usr/local/share/libtool
+## $ sudo ln -s /usr/local/opt/libtool/share/aclocal /usr/local/share/libtool/libltdl/m4
+## $ sudo ln -s /usr/local/share/libtool/config /usr/local/share/libtool/libltdl/config
+## $ cd ../libgmp-* && autoreconf --install --force --verbose 
+## $ aclocal && libtoolize -f && autoheader && automake
+## $ cd ../libgomp-* && autoreconf --install --force --verbose
+## $ aclocal && libtoolize -f && autoheader && automake
 make_runLibDepsConsfigureScripts: 
 	@mkdir -p ./Lib
-	@cd $(LIBGMPDIR) && rm -f ./shtool && \
+	@cd $(LIBGMPDIR) && \
+		aclocal && $(LIBTOOLIZE) -f && autoheader && automake --add-missing && \
+		rm -rf ./libtool && \
+		rm -rf ./shtool install-sh install.sh && \
+		CONFIG_SHELL="$(shell which bash)" \
 		CFLAGS="$(CFLAGS_LIBGMP)" \
 		CXXFLAGS="$(CXXFLAGS_LIBGMP)" \
 		LDFLAGS="$(LDFLAGS_LIBGMP)" \
 		READLINK="$(READLINK)" \
 		RANLIB="$(RANLIB)" \
-		CONFIG_SHELL=$(BASH) \
+		LIBTOOL="$(LIBTOOL)" \
+		AUTOCONF="$(AUTOCONF)" \
 		CC="$(CC)" CCLD="$(LD)" CXX="$(CXX)" CXXLD="$(LD)" \
 		/bin/bash ./configure --enable-static --disable-shared --with-pic --enable-cxx \
 			--disable-assembly gmp_cv_asm_underscore=yes
-	@cd $(LIBGOMPDIR) && rm -f ./shtool && \
-		touch libtool-dist && cp -Rp libtool-dist libtool && \
+	@cd $(LIBGOMPDIR) && \
+		aclocal && $(LIBTOOLIZE) -f && autoheader && automake --add-missing && \
+		rm -rf ./libtool && \
+		rm -rf ./shtool install-sh install.sh && \
+		CONFIG_SHELL="$(shell which bash)" \
 		CC="$(CC_LIBGOMP)" \
 		FC="$(GFORTRAN)" \
 		CFLAGS="$(CFLAGS_LIBGOMP)" \
@@ -197,22 +207,29 @@ make_runLibDepsConsfigureScripts:
 		FCFLAGS="$(FCFLAGS_LIBGOMP)" \
 		READLINK="$(READLINK)" \
 		RANLIB="$(RANLIB)" \
-		CONFIG_SHELL=$(BASH) \
-		LIBTOOL=$(shell which libtool) \
+		LIBTOOL="$(LIBTOOL)" \
+		AUTOCONF="$(AUTOCONF)" \
 		CC="$(CC)" CCLD="$(LD)" CXX="$(CXX)" CXXLD="$(LD)" \
 		/bin/bash ./configure --srcdir=. \
 			--enable-static --disable-shared --disable-tls \
 			--disable-werror --disable-assembly --disable-dependency-tracking \
-			gmp_cv_asm_underscore=yes gcc_cv_use_emutls=no && \
-		cp libtool-dist libtool
+			gmp_cv_asm_underscore=yes gcc_cv_use_emutls=no
 	@cd $(GTFOLDMAKEDIR) && \
 		CFLAGS="$(CFLAGS_GTFOLD)" \
 		CXXFLAGS="$(CXXFLAGS_GTFOLD)" \
                 LDFLAGS="$(LDFLAGS_GTFOLD)" \
 		LIB_OMP="$(shell $(READLINK) -f $(LIBGOMPSTATIC).a)" \
 		READLINK="$(READLINK)" \
+		CONFIG_SHELL="$(shell which bash)" \
+		LIBTOOL="$(LIBTOOL)" \
+		AUTOCONF="$(AUTOCONF)" \
 		CC="$(CC)" CCLD="$(CC)" CXX="$(LD)" CXXLD="$(LD)" \
-		./configure
+		/bin/bash ./configure --srcdir=.
+	@cd $(GTFOLDMAKEDIR) && \
+		$(SED) -i -e 's/SET_MAKE = \@SET_MAKE\@//g' ./{,include,src}/Makefile* && \
+		$(SED) -i -e 's/\@SET_MAKE\@//g' ./{,include,src,data,data/*}/Makefile* && \
+		$(SED) -i -r -e 's/\@[a-zA-Z_0-9]+\@//g' ./{,include,src,data,data/*}/Makefile* && \
+		rm -rf ./autom4te.cache
 
 make_libgmp: $(LIBGMPSTATIC)
 
@@ -223,8 +240,6 @@ make_libgomp: $(LIBGOMPSTATIC).a $(LIBGOMPSTATIC).so
 
 $(LIBGOMPSTATIC).%:
 	@cd $(LIBGOMPDIR) && make libgomp.la 
-	#@cd $(LIBGOMPDIR) && ld -r -o tmp.otemp *.o && rm -f tmp.o && \
-		nm -u tmp.otemp && ar rvs temp.a tmp.otemp && mv temp.a .libs/libgomp.a && rm -f tmp.otemp
 	@/bin/bash BuildScripts/InstallMacRenameSymbols.sh $(LIBGOMPDIR)/.libs/libgomp.a
 
 make_GTFold:
@@ -256,9 +271,6 @@ clean:
 		$(OBJBUILDDIR)/* LocalBashConfigInstalled.lock
 	@rm -rf ctfiles/ *.txt *.samples *.frequency *.pfarrays *.out *.energy *.ct
 	@rm -rf $(GTFPYTHONLIB)/__pycache__ $(GTFPYTHONLIB)/*.pyc
-	@cd $(GTFOLDMAKEDIR) && make clean || echo "make clean failed (GTFold) ... "
-	@cd $(LIBGMPDIR) && make distclean || echo "make clean failed (libgmp) ... "
-	@cd $(LINGOMPDIR) && make distclean || echo "make clean failed (libgomp) ... "
 	@make make_runLibDepsConsfigureScripts
 
 local-clean:
@@ -268,7 +280,6 @@ local-clean:
 	-cp $(GTFPYTHONSRC)/GTFoldDataDir.c $(GTFPYTHONSRC)/GTFoldDataDir.c.bak
 	-cp $(GTFPYTHONLIB)/GTFoldPythonConfig.py $(GTFPYTHONLIB)/GTFoldPythonConfig.py.bak 
 	-rm -rf $(GTFPYTHONSRC)/GTFoldDataDir.c $(GTFPYTHONLIB)/GTFoldPythonConfig.py
-	@cd $(GTFOLDMAKEDIR) && make clean
 
 test: make_GTFoldPython
 	@rm -rf $(GTFPYTHONLIB)/*.pyc $(GTFPYTHONLIB)/__pycache__

@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-gtfold_datadir = $(datadir)/@PACKAGE@/UNAParams
+gtfold_datadir = $(datadir)//UNAParams
 
 gtfold_data_DATA = \
 	stack.DAT\

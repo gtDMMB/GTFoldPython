@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-gtfold_datadir = $(datadir)/@PACKAGE@/RNAParams
+gtfold_datadir = $(datadir)//RNAParams
 
 gtfold_data_DATA = \
 	stack.DAT\

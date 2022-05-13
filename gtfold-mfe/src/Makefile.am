@@ -1,7 +1,7 @@
 INCLUDES = -I$(top_srcdir) -I$(top_srcdir)/include
 
-AM_CFLAGS = $(OPENMP_CFLAGS) -DDATADIR='$(datadir)/@PACKAGE@'
-AM_CXXFLAGS = -DDATADIR='$(datadir)/@PACKAGE@'
+AM_CFLAGS = $(OPENMP_CFLAGS) -DDATADIR='$(datadir)/'
+AM_CXXFLAGS = -DDATADIR='$(datadir)/'
 
 bin_PROGRAMS = gtfold
 
