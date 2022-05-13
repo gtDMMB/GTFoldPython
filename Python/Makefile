@@ -188,7 +188,8 @@ make_runLibDepsConsfigureScripts:
 		CC="$(CC)" CCLD="$(LD)" CXX="$(CXX)" CXXLD="$(LD)" \
 		/bin/bash ./configure --enable-static --disable-shared --with-pic --enable-cxx \
 			--disable-assembly gmp_cv_asm_underscore=yes
-	@cd $(LIBGOMPDIR) && rm -f ./shtool && cp -Rp libtool-dist libtool && \
+	@cd $(LIBGOMPDIR) && rm -f ./shtool && \
+		touch libtool-dist && cp -Rp libtool-dist libtool && \
 		CC="$(CC_LIBGOMP)" \
 		FC="$(GFORTRAN)" \
 		CFLAGS="$(CFLAGS_LIBGOMP)" \
