@@ -1,0 +1,12 @@
+ctfiles/
+ctfiles/*
+
+testrun_bpp.txt
+testrun_partfuncarrays.pfarrays
+testrun_sample.ct 
+testrun_subpopt_ss.txt 
+
+*_bpp.txt
+*_partfuncarrays.pfarrays
+*_sample.ct 
+*_subpopt_ss.txt 
